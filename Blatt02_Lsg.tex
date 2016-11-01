@@ -17,14 +17,8 @@
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\lhead{Jonas Panizza (567678)\\
-	Fabian Bucher (577513)\\
-	Falko Becker (559053)\\
-	Blatt 02}
-\rhead{ÜG Di 13-15 Jens Keppeler\\
-	ÜG Di 13-15 Jens Keppeler \\
-	ÜG Di 13-15 Jens Keppeler \\
-	Rückgabe ÜG Di 13-15 Jens Keppeler}
+\lhead{\textbf{Blatt 02}}
+\rhead{}
 \cfoot{}
 \rfoot{\thepage}
 \begin{document}
@@ -35,24 +29,53 @@
 			\varphi_1 := \bigwedge\limits_{i,j=0}^n $
 			\= $ ((A_{i,j}\wedge \lnot O_{i,j} \wedge \lnot G_{i,j}\wedge \lnot K_{i,j})\vee(\lnot A_{i,j}\wedge O_{i,j}\wedge\lnot G_{i,j}\wedge \lnot K_{i,j}) $ \\
 			\> $ \vee ( \lnot A_{i,j}\wedge \lnot O_{i,j}\wedge G_{i,j}\wedge \lnot K_{i,j})\vee( \lnot A_{i,j}\wedge \lnot O_{i,j}\wedge \lnot G_{i,j}\wedge K_{i,j}))$
-		\end{tabbing} 
-		
-		 
-		\item $ \varphi_2 $ erfüllt, wenn es mindestens ein Grundstück in der Stadt gibt, dessen Bewohner ein Katzenliebhaber ist und dessen vier Nachbarn ebenfalls Katzenliebhaber sind.
-		\item $ \varphi_3 = \bigwedge\limits_{i,j \in \{2,..,29\}} \lnot G_{i,j} $
+		\end{tabbing}\
+		\item $ \varphi_2 $ erfüllt, wenn es mindestens ein Grundstück in der Stadt gibt, dessen Bewohner ein Katzenliebhaber ist und dessen vier Nachbarn ebenfalls Katzenliebhaber sind.\\
+		\item $ \varphi_3 = \bigwedge\limits_{i,j \in \{2,..,29\}} \lnot G_{i,j} $\\
 		\item $ \varphi_4 = \bigwedge\limits_{i,j \in \{2,...,29\}} (A_{i,j} \rightarrow ((O_{i-1,j} \vee O_{i+1,j} \vee O_{i,j-1} \vee O_{i,j+1}) \wedge (\lnot K_{i-1,j} \wedge \lnot K_{i+1,j} \wedge \lnot K_{i,j-1} \wedge \lnot K_{i,j+1})) $
-	\end{compactenum} \
-	
+	\end{compactenum}\ \\
 	\textbf{Aufgabe 02}
 	\begin{compactenum} [(a)]
 		\item
 		\begin{itemize}
 			\item $ \varphi_1 \not\equiv \varphi_2$, da $ \llbracket \varphi_1 \rrbracket ^I = 0 \neq \llbracket \varphi_2 \rrbracket ^I = 1 \qquad$ mit $ I(A_0) = 1 $; $ I(A_1) = 1 $ $ (A_2) = 0 $
 			\item $ \varphi_3 \not\equiv \varphi_4$, da $ \llbracket \varphi_3 \rrbracket ^I = 1 \neq \llbracket \varphi_4 \rrbracket ^I = 0 \qquad$ mit $ I(A_0) = 0 $; $ I(A_1) = 1 $
-		\end{itemize}
-		\item Todo	
+		\end{itemize}\
+		\item Seien $I = \{i_1, \dots , i_m\}$,  $J = \{j_1, \dots , j_n\} $ endliche Mengen und sei f"ur jedes $i \in I$ und $j \in J$ ein Formel $\varphi_{i, j}$ gegeben.\\
+		$\bigwedge\limits_{i \in I} \bigvee\limits_{j \in J} \varphi_{i, j} \equiv \bigvee\limits_{j \in J} \bigwedge\limits_{i \in I} \varphi_{i, j}$ f.a. $i \in I, j\in J$\\
+		Es gilt nicht, dass in jedem Fall die Bedingung erf"ullt ist.
+		\begin{proof}\ \\
+			Fall $n = m = 2$\\
+			$\bigwedge\limits_{i = 1}^2 \bigvee\limits_{j = 1}^2 \varphi_{i, j} = (\varphi_{1,1} \vee \varphi_{1,2}) \wedge (\varphi_{2,1} \vee \varphi_{2,2}) =: \psi$\\
+		    $\bigvee\limits_{j = 1}^2 \bigwedge\limits_{i = 1}^2  \varphi_{i, j} = (\varphi_{1,1} \wedge \varphi_{2,1}) \vee (\varphi_{1,2} \wedge \varphi_{2,2}) =: \chi$\\\\
+		    Wahrheitstabelle:\\ \\
+		   \begin{tabular}{cccc|c|c|c|c|c|c}
+		   	$\varphi_{1,1}$ & $\varphi_{1,2}$ & $\varphi_{2,1}$ & $\varphi_{2,2}$ & $(\varphi_{1,1} \vee \varphi_{1,2})$ & $(\varphi_{2,1} \vee \varphi_{2,2})$ & $(\varphi_{1,1} \wedge \varphi_{2,1})$ & $(\varphi_{1,2} \vee \varphi_{2,2})$ & $\psi$ & $\chi$ \\ \hline
+		   	0 & 0 & 0 & 0 & 0 & 0 & 0 & TODO & 0 & 0\\
+		   	0 & 0 & 0 & 1 & 0 & 1 & 0 &  & 0 & 0\\
+		   	0 & 0 & 1 & 0 & 0 & 1 & 0 &  & 0 & 0\\
+		   	0 & 0 & 1 & 1 & 0 & 1 & 0 &  & 0 & 1\\
+		   	&&&&&&&&&\\
+		   	0 & 1 & 0 & 0 & 1 & 0 & 0 &  & 0 & 0\\
+		   	0 & 1 & 0 & 1 & 1 & 1 & 0 &  & 1 & 0\\
+		   	0 & 1 & 1 & 0 & 1 & 1 & 0 &  & 1 & 0\\
+		   	0 & 1 & 1 & 1 & 1 & 1 & 0 &  & 1 & 1\\
+		   	&&&&&&&&&\\
+		   	1 & 0 & 0 & 0 & 1 & 0 & 0 &  & 0 & 0\\
+		   	1 & 0 & 0 & 1 & 1 & 1 & 0 &  & 1 & 0\\
+		   	1 & 0 & 1 & 0 & 1 & 1 & 1 &  & 1 & 0\\
+		   	1 & 0 & 1 & 1 & 1 & 1 & 1 &  & 1 & 1\\
+		   	&&&&&&&&&\\
+		   	1 & 1 & 0 & 0 & 1 & 0 & 0 &  & 0 & 1\\
+		   	1 & 1 & 0 & 1 & 1 & 1 & 0 &  & 1 & 1\\
+		   	1 & 1 & 1 & 0 & 1 & 1 & 1 &  & 1 & 1\\
+		   	1 & 1 & 1 & 1 & 1 & 1 & 1 &  & 1 & 1\\
+		   \end{tabular}\\
+			Damit ist $\psi \ \cancel{\equiv} \ \chi$
+		\end{proof}
 	\end{compactenum} \
-	
+
+	\newpage
 	\textbf{Aufgabe 3}
 	\begin{compactenum} [(a)]
 		\item 
@@ -60,11 +83,28 @@
 			\item $ A_{42} $
 			\item $ (A_1 \vee \lnot (0 \wedge 1)) $
 			\item $ \lnot (0 \wedge A_2) \vee ((\lnot 1 \vee A_5) \wedge (A_3 \vee \lnot ((A_3 \vee \lnot 0) \vee \lnot A_4))) $
-		\end{compactenum}
-		
+		\end{compactenum}\ \\
 		\item $ \varphi $ ist unerfüllbar $\Leftrightarrow \varphi \equiv 0$
-		$ \xLeftrightarrow{\text{Dualitätssatz}} \tilde{\varphi} \equiv \tilde{0} \Leftrightarrow \tilde{\varphi} \equiv 1 \xLeftrightarrow{\text{Lemma 2.24b}} \tilde{\varphi} $ ist allgemein gültig.
-		\item Todo
+		$ \xLeftrightarrow{\text{Dualitätssatz}} \tilde{\varphi} \equiv \tilde{0} \Leftrightarrow \tilde{\varphi} \equiv 1 \xLeftrightarrow{\text{Lemma 2.24b}} \tilde{\varphi} $ ist allgemein gültig.\\
+		\item 2-stelligen Junktor $\tilde{\rightarrow}$, so dass f"ur alle $X, Y \in \mathsf{AS}$ und alle Interpretationen $\mathcal{I}$ gilt: \[\llbracket X \tilde{\rightarrow} Y \rrbracket^\mathcal{I} = 1 - \llbracket X \rightarrow Y \rrbracket^{\tilde{\mathcal{I}}} \]
+		Der Junktor $\tilde{\rightarrow}$ sei definiert durh:\\\\
+		\begin{tabular}{c|c|c|c|c}
+			$X$ & $Y$ & $\llbracket X \tilde{\rightarrow} Y \rrbracket^\mathcal{I}$ & $\llbracket X \tilde{\rightarrow} Y \rrbracket^{\tilde{\mathcal{I}}}$ &  $1 - \llbracket X \rightarrow Y \rrbracket^{\tilde{\mathcal{I}}}$\\ 
+			\hline 
+			0 & 0 & 1 & 1 & 0 \\ 
+			\hline 
+			0 & 1 & 1 & 0 & 1 \\ 
+			\hline 
+			1 & 0 & 0 & 1 & 0 \\ 
+			\hline 
+			1 & 1 & 1 & 1 & 0 \\ 
+		\end{tabular} \ \\\\
+		\textbf{Satz 2.28 (Dualit"atssatz der Aussagenlogik)}\\
+		F"ur alle Formeln $\varphi, \chi \in \mathsf{AF}$, in denen keine Implikation vorkommt, gilt: $\varphi \equiv \chi \Leftrightarrow \tilde{\varphi} \equiv \tilde{\chi}$.\\
+		Nach der Definition von $\tilde{\rightarrow}$, wollen wir wissen ob nun der Dualit"atssatz auch f"ur aussagenlogische Formeln mit Implikationen formuliert werden kann. \\
+		Gem"a"s der Induktionsannahme gilt: $\llbracket \tilde{\varphi} \rrbracket^\mathcal{I} = 1 - \llbracket \varphi \rrbracket^{\tilde{\mathcal{I}}}$ und $\llbracket \tilde{\psi} \rrbracket^\mathcal{I} = 1 - \llbracket \psi \rrbracket^{\tilde{\mathcal{I}}}$ f"ur $\mathcal{I}$ eine beliebige Interpretation und f"ur $\varphi, \psi$ beliebige Formeln von $\mathsf{AL}$.\\
+		Es ist nun zu schauen, ob auch $\llbracket \widetilde{\varphi \rightarrow \psi} \rrbracket^\mathcal{I} = 1 - \llbracket \varphi \rightarrow \psi \rrbracket^{\tilde{\mathcal{I}}}$ gilt.\\
+		Per Definition ist $\widetilde{\varphi \rightarrow \psi} = \tilde{\varphi} \tilde{\rightarrow} \tilde{\psi}$. Zur "Uberpr"ufung....TODO Wahrheitstabelle
 	\end{compactenum}\
 	
 	\textbf{Aufgabe 4}
