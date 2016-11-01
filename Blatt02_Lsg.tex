@@ -1,0 +1,76 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[ngerman]{babel}		%dt. Übersetzung und Umlaute
+\usepackage[utf8]{inputenc}		%Umlaute direkt eingeben
+\usepackage{mathtools}			%Mathekrams
+\usepackage{paralist}			%bessere Listen
+\usepackage{amssymb}			%Mathesymbole
+\usepackage{amsthm}			%typesetting theorems (Text über = u.ä.)
+\usepackage{fancyhdr} 			%Headerstyles
+\usepackage{verbatim}			%Sourcecode einfügen
+\usepackage[margin=2.5cm,headheight=40pt,top=3cm]{geometry}
+\usepackage{tikz}
+\usepackage{cancel}
+\usepackage{stmaryrd}
+\usepackage{colortbl}
+\usetikzlibrary{matrix,positioning,arrows, automata}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{Jonas Panizza (567678)\\
+	Fabian Bucher (577513)\\
+	Falko Becker (559053)\\
+	Blatt 02}
+\rhead{ÜG Di 13-15 Jens Keppeler\\
+	ÜG Di 13-15 Jens Keppeler \\
+	ÜG Di 13-15 Jens Keppeler \\
+	Rückgabe ÜG Di 13-15 Jens Keppeler}
+\cfoot{}
+\rfoot{\thepage}
+\begin{document}
+	\parindent0pt
+	\textbf{Aufgabe 01}
+	\begin{compactenum} [(a)]
+		\item  \begin{tabbing} $
+			\varphi_1 := \bigwedge\limits_{i,j=0}^n $
+			\= $ ((A_{i,j}\wedge \lnot O_{i,j} \wedge \lnot G_{i,j}\wedge \lnot K_{i,j})\vee(\lnot A_{i,j}\wedge O_{i,j}\wedge\lnot G_{i,j}\wedge \lnot K_{i,j}) $ \\
+			\> $ \vee ( \lnot A_{i,j}\wedge \lnot O_{i,j}\wedge G_{i,j}\wedge \lnot K_{i,j})\vee( \lnot A_{i,j}\wedge \lnot O_{i,j}\wedge \lnot G_{i,j}\wedge K_{i,j}))$
+		\end{tabbing} 
+		
+		 
+		\item $ \varphi_2 $ erfüllt, wenn es mindestens ein Grundstück in der Stadt gibt, dessen Bewohner ein Katzenliebhaber ist und dessen vier Nachbarn ebenfalls Katzenliebhaber sind.
+		\item $ \varphi_3 = \bigwedge\limits_{i,j \in \{2,..,29\}} \lnot G_{i,j} $
+		\item $ \varphi_4 = \bigwedge\limits_{i,j \in \{2,...,29\}} (A_{i,j} \rightarrow ((O_{i-1,j} \vee O_{i+1,j} \vee O_{i,j-1} \vee O_{i,j+1}) \wedge (\lnot K_{i-1,j} \wedge \lnot K_{i+1,j} \wedge \lnot K_{i,j-1} \wedge \lnot K_{i,j+1})) $
+	\end{compactenum} \
+	
+	\textbf{Aufgabe 02}
+	\begin{compactenum} [(a)]
+		\item
+		\begin{itemize}
+			\item $ \varphi_1 \not\equiv \varphi_2$, da $ \llbracket \varphi_1 \rrbracket ^I = 0 \neq \llbracket \varphi_2 \rrbracket ^I = 1 \qquad$ mit $ I(A_0) = 1 $; $ I(A_1) = 1 $ $ (A_2) = 0 $
+			\item $ \varphi_3 \not\equiv \varphi_4$, da $ \llbracket \varphi_3 \rrbracket ^I = 1 \neq \llbracket \varphi_4 \rrbracket ^I = 0 \qquad$ mit $ I(A_0) = 0 $; $ I(A_1) = 1 $
+		\end{itemize}
+		\item Todo	
+	\end{compactenum} \
+	
+	\textbf{Aufgabe 3}
+	\begin{compactenum} [(a)]
+		\item 
+		\begin{compactenum} [(i)]
+			\item $ A_{42} $
+			\item $ (A_1 \vee \lnot (0 \wedge 1)) $
+			\item $ \lnot (0 \wedge A_2) \vee ((\lnot 1 \vee A_5) \wedge (A_3 \vee \lnot ((A_3 \vee \lnot 0) \vee \lnot A_4))) $
+		\end{compactenum}
+		
+		\item $ \varphi $ ist unerfüllbar $\Leftrightarrow \varphi \equiv 0$
+		$ \xLeftrightarrow{\text{Dualitätssatz}} \tilde{\varphi} \equiv \tilde{0} \Leftrightarrow \tilde{\varphi} \equiv 1 \xLeftrightarrow{\text{Lemma 2.24b}} \tilde{\varphi} $ ist allgemein gültig.
+		\item Todo
+	\end{compactenum}\
+	
+	\textbf{Aufgabe 4}
+	\begin{compactenum} [(a)]
+		\item Todo
+		
+		\item Todo
+	\end{compactenum}
+\end{document}
