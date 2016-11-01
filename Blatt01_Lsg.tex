@@ -1,0 +1,131 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[ngerman]{babel}		%dt. Übersetzung und Umlaute
+\usepackage[utf8]{inputenc}		%Umlaute direkt eingeben
+\usepackage{mathtools}			%Mathekrams
+\usepackage{paralist}			%bessere Listen
+\usepackage{amssymb}			%Mathesymbole
+\usepackage{amsthm}			%typesetting theorems (Text über = u.ä.)
+\usepackage{fancyhdr} 			%Headerstyles
+\usepackage{verbatim}			%Sourcecode einfügen
+\usepackage[margin=2.5cm,headheight=40pt]{geometry}
+\usepackage{tikz}
+\usepackage{cancel}
+\usepackage{stmaryrd}
+\usepackage{colortbl}
+\usetikzlibrary{matrix,positioning,arrows, automata}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{\textbf{Blatt 01}}
+\rhead{}
+\cfoot{}
+\rfoot{\thepage}
+\begin{document}
+	\parindent0pt
+	\textbf{Aufgabe 01}
+	\begin{compactenum}[(i)]
+		\item $ A_{1028} \in \mathsf{AL} $
+		\item $ (1 \vee 0) \in \mathsf{AL}$
+		\item $ \lnot(A_{42})\notin \mathsf{AL}$
+		\item $ \lnot\lnot\lnot\lnot\lnot A_5 \in \mathsf{AL}$
+		\item $ (A_1 \wedge A_2)\ gdw.\ (A_1 \vee A_2)\notin \mathsf{AL}$
+		\item $ ((A_1 \to A_2) \vee (A_0 \leftarrow A_1))\notin \mathsf{AL}$
+	\end{compactenum}\
+
+	\textbf{Aufgabe 02}
+	\begin{compactenum}[(a)]
+		\item Allgemein gültig $\mid$ Erfüllbar $\mid$ Unerfüllbar
+		\begin{compactenum}[(i)]
+			\item Allgemein gültig, erfüllbar, nicht unerfüllbar!\\
+			Modell: $\mathcal{I}(A_1)=0 $
+			\item Nicht allgemein gültig, erfüllbar, nicht unerfüllbar!\\
+			Modell: $\mathcal{I}(A_0)=1 $ und $\mathcal{I}(A_1)=1 $, nicht erfüllbare Interpretation: $\mathcal{I}(A_1)=0 $ und	$\mathcal{I}(A_2)=0 $
+			\item Nicht allgemein gültig, nicht erfüllbar, unerfüllbar!
+			\item Nicht allgemein gültig, erfüllbar, nicht unerfüllbar!\\
+			Modell: $\mathcal{I}(A_i)=0 $\ für alle i $\in \mathbb{N} $\\
+			Nicht erfüllbare Interpretation: $\mathcal{I}(A_1)=1$ und $\mathcal{I}(A_i)=0 $\ für alle i $\in \mathbb{N}_{>1}$
+		\end{compactenum}
+		\item $\Phi \nvDash \varphi_3\ $, da $\Phi$ erfüllbar ist und $\varphi_3$ unerfüllbar ist für alle möglichen Interpretationen.
+		\item $ \mathcal{I}(A_n)=
+		\begin{cases}
+		0 & \text{für $n$ nicht durch 3 teilbar}\\
+		1 & \text{für $n$ duch 3 teilbar}
+		\end{cases}
+		$ \\ Voraussetzung: Wenn $n$ durch 3 teilbar ist, ist $n+1$ und $n+2$ nicht durch 3 teilbar.
+		\begin{itemize}
+			\item Sei $n$ mod 3 = 0: Es folgt $ \mathcal{I}(A_n)=1 $ und $ \mathcal{I}(A_{n+1})=0 $. Also ist die aussagenlogische Formel $(A_n \leftrightarrow \lnot A_{n+1}) = (1 \leftrightarrow \lnot 0) = 1$ stets erfüllt.
+			\item Sei $n$ mod 3 = 1: Es folgt $ \mathcal{I}(A_n)=0 $ und $ \mathcal{I}(A_{n+1})=0 $ und $ \mathcal{I}(A_{n+2})=1 $. Also ist die Aussagenlogische Formel $ ((A_n \leftrightarrow A_{n+1}) \leftrightarrow A_{n+2}) = ((0 \leftrightarrow 0) \leftrightarrow 1) = 1 $ stets erfüllt.
+			\item Sei $n$ mod 3 = 2: Es folgt $ \mathcal{I}(A_n)=0 $ und $ \mathcal{I}(A_{n+1})=1 $ und $ \mathcal{I}(A_{n+2})=0 $. Also ist die Aussagenlogische Formel $ ((A_n \leftrightarrow A_{n+1}) \leftrightarrow A_{n+2}) = ((0 \leftrightarrow 1) \leftrightarrow 0) = 1 $ stets erfüllt.
+		\end{itemize}
+	\end{compactenum}\
+
+	\textbf{Aufgabe 03}
+	\begin{compactenum}[(a)]
+		\item Aussagenlogische Formeln:
+		\begin{compactenum}[I:]
+			\item $(\lnot B \rightarrow K)$
+			\item $((V \vee S) \rightarrow \lnot B)$
+			\item $(K \leftrightarrow (B \wedge \lnot S))$ oder $((K \rightarrow (B \wedge \lnot S)) \wedge ((B \wedge \lnot S) \rightarrow K))$
+			\item $(B \vee V)$
+		\end{compactenum}
+		\item $\varphi:= (\lnot B \rightarrow K) \wedge ((V \vee S) \rightarrow \lnot B) \wedge ((K \rightarrow (B \wedge \lnot S)) \wedge ((B \wedge \lnot S) \rightarrow K)) \wedge (B \vee V)$
+
+		\item Wahrheitstabelle: \\
+		\begin{tabular}{c|c|c|c|c|c|c|c|c|c}
+			$B$ & $K$ & $S$ & $V$ & $(\lnot B \rightarrow K)$ & $((V \vee S) \rightarrow \lnot B)$ & $(B \wedge \lnot S)$ & $(K \leftrightarrow (B \wedge \lnot S))$ & $(B \vee V)$ & $\varphi$ \\ \hline
+			0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0\\
+			0 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 1 & 0\\
+			0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
+			0 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & 0\\
+			0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0\\
+			0 & 1 & 0 & 1 & 1 & 1 & 0 & 0 & 1 & 0\\
+			0 & 1 & 1 & 0 & 1 & 1 & 1 & 1 & 0 & 0\\
+			\rowcolor{lightgray}0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+			1 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 0\\
+			1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 0\\
+			1 & 0 & 1 & 0 & 1 & 0 & 0 & 1 & 1 & 0\\
+			1 & 0 & 1 & 1 & 1 & 0 & 0 & 1 & 1 & 0\\
+			\rowcolor{lightgray}1 & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1\\
+			1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 0\\
+			1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0\\
+			1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 0\\
+		\end{tabular}
+		\newpage
+
+		\item $  \mathcal{I}_1(S)=1 $; $  \mathcal{I}_1(V)=1 $; $  \mathcal{I}_1(K)=1 $; $  \mathcal{I}_1(B)=0 $ : \\
+		$\llbracket \varphi \rrbracket ^{ \mathcal{I}_1} = (\lnot 0 \rightarrow 1) \wedge ((1 \vee 1) \rightarrow \lnot 0) \wedge ((1 \rightarrow (0 \wedge \lnot 1)) \wedge ((0 \wedge \lnot 1) \rightarrow 1)) \wedge (0 \vee 1) = 1 \wedge 1 \wedge 1 \wedge 1 = 1$\\
+		$\Longrightarrow$ Die Interpretation $\mathcal{I}_1$ erfüllt die $\mathsf{AL} \varphi$
+		\item Wenn König Alfons die Maßnahmen aus Teilaufgabe (d) umsetzt, hat er bereits die Anforderungen der EZB erfüllt, da $\mathcal{I}_1 \models \varphi$. \\
+		$ \varphi(B,K,S,V) $ erfüllt allerdings auch bei $\mathcal{I}_2 = \varphi[1,1,0,0]$, somit wird er allen Anforderungen der EZB gerecht, wenn er:
+		\begin{itemize}
+			\item Die Ausgaben für Bildung erhöht
+			\item Die Banken stärker kontrolliert
+			\item Keine Steuern senkt
+			\item Kein Staatseigentum verkauft
+		\end{itemize}
+	\end{compactenum}\
+
+	\textbf{Aufgabe 04}
+	\begin{compactenum}
+		\item [b)]
+		\begin{compactenum}[i)]
+			\item false.
+			\item true.
+			\item X = leia;\\
+			X = luke.
+			\item Y = leia;\\
+			Y = han.
+			\item X = han;\\
+			X = darth\_vader;\\
+			false.
+			\item Y = leia;\\
+			Y = han.
+		\end{compactenum}
+		\item [c)]
+		Y = darth\_vader;\\
+		Y = leia;\\
+		Y = han.\\
+		D.h. Darth Vader verfolgt sich selbst. Verfolgt von Darth Vader wird, wer Luke mag. Wer Luke mag, ist auf der guten Seite (Han) bzw. mit Luke verwandt (Leia und durch die neue Zeile eben auch Darth Vader). Das gleiche Ergebnis erscheint auch bei der Anfrage \verb|mag(luke, X).|.
+	\end{compactenum}
+\end{document}
