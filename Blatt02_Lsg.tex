@@ -104,7 +104,16 @@
 		Nach der Definition von $\tilde{\rightarrow}$, wollen wir wissen ob nun der Dualit"atssatz auch f"ur aussagenlogische Formeln mit Implikationen formuliert werden kann. \\
 		Gem"a"s der Induktionsannahme gilt: $\llbracket \tilde{\varphi} \rrbracket^\mathcal{I} = 1 - \llbracket \varphi \rrbracket^{\tilde{\mathcal{I}}}$ und $\llbracket \tilde{\psi} \rrbracket^\mathcal{I} = 1 - \llbracket \psi \rrbracket^{\tilde{\mathcal{I}}}$ f"ur $\mathcal{I}$ eine beliebige Interpretation und f"ur $\varphi, \psi$ beliebige Formeln von $\mathsf{AL}$.\\
 		Es ist nun zu schauen, ob auch $\llbracket \widetilde{\varphi \rightarrow \psi} \rrbracket^\mathcal{I} = 1 - \llbracket \varphi \rightarrow \psi \rrbracket^{\tilde{\mathcal{I}}}$ gilt.\\
-		Per Definition ist $\widetilde{\varphi \rightarrow \psi} = \tilde{\varphi} \tilde{\rightarrow} \tilde{\psi}$. Zur "Uberpr"ufung....TODO Wahrheitstabelle
+		Per Definition ist $\widetilde{\varphi \rightarrow \psi} = \tilde{\varphi} \tilde{\rightarrow} \tilde{\psi}$. Zur "Uberpr"ufung ob $\llbracket \tilde{\varphi} \tilde{\rightarrow} \tilde{\psi} \rrbracket^{\mathcal{I}} = 1 - \llbracket \varphi \rightarrow \psi \rrbracket^{\tilde{\mathcal{I}}}$ gilt, schauen wir uns die Wahrheitstabelle an:\\\\
+		\begin{tabular}{c|c|c||c|c|c|c}
+			$\llbracket \tilde{\varphi} \rrbracket^{\mathcal{I}}$ & $\llbracket \tilde{\psi} \rrbracket^{\mathcal{I}}$ & $\llbracket \tilde{\varphi} \tilde{\rightarrow} \tilde{\psi} \rrbracket^{\mathcal{I}}$ &  $\llbracket \varphi \rrbracket^{\tilde{\mathcal{I}}}$ & $\llbracket \psi \rrbracket^{\tilde{\mathcal{I}}}$ & $\llbracket \varphi \rightarrow \psi \rrbracket^{\tilde{\mathcal{I}}}$ & $1 - \llbracket \varphi \rightarrow \psi \rrbracket^{\tilde{\mathcal{I}}}$ \\ 
+			\hline 
+			0 & 0 & 0 & 0 & 0 & 1 & 0 \\ 
+			0 & 1 & 0 & 0 & 1 & 1 & 0 \\ 
+			1 & 0 & 1 & 1 & 0 & 0 & 1 \\ 
+			1 & 1 & 0 & 1 & 1 & 1 & 0 \\ 
+		\end{tabular} \ \\\\
+		Die Tabelle ist f"ur $\llbracket \tilde{\varphi} \tilde{\rightarrow} \tilde{\psi} \rrbracket^{\mathcal{I}} = 1 - \llbracket \varphi \rightarrow \psi \rrbracket^{\tilde{\mathcal{I}}}$ g"ultig und somit kann man mit der Definition von $\tilde{\rightarrow}$ den Qualit"atssatz auch f"ur aussagenlogische Formeln mit Implikationen formulieren.
 	\end{compactenum}\
 	
 	\textbf{Aufgabe 4}
