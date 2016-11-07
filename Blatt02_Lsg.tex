@@ -12,6 +12,7 @@
 \usepackage{cancel}
 \usepackage{stmaryrd}
 \usepackage{colortbl}
+\usepackage{qtree}
 \usetikzlibrary{matrix,positioning,arrows, automata}
 
 \pagestyle{fancy}
@@ -43,33 +44,33 @@
 		\end{itemize}\
 		\item Seien $I = \{i_1, \dots , i_m\}$,  $J = \{j_1, \dots , j_n\} $ endliche Mengen und sei f"ur jedes $i \in I$ und $j \in J$ ein Formel $\varphi_{i, j}$ gegeben.\\
 		$\bigwedge\limits_{i \in I} \bigvee\limits_{j \in J} \varphi_{i, j} \equiv \bigvee\limits_{j \in J} \bigwedge\limits_{i \in I} \varphi_{i, j}$ f.a. $i \in I, j\in J$\\
-		Es gilt nicht, dass in jedem Fall die Bedingung erf"ullt ist.
+		Die Äquivalenz gilt nicht!
 		\begin{proof}\ \\
 			Fall $n = m = 2$\\
 			$\bigwedge\limits_{i = 1}^2 \bigvee\limits_{j = 1}^2 \varphi_{i, j} = (\varphi_{1,1} \vee \varphi_{1,2}) \wedge (\varphi_{2,1} \vee \varphi_{2,2}) =: \psi$\\
 		    $\bigvee\limits_{j = 1}^2 \bigwedge\limits_{i = 1}^2  \varphi_{i, j} = (\varphi_{1,1} \wedge \varphi_{2,1}) \vee (\varphi_{1,2} \wedge \varphi_{2,2}) =: \chi$\\\\
 		    Wahrheitstabelle:\\ \\
 		   \begin{tabular}{cccc|c|c|c|c|c|c}
-		   	$\varphi_{1,1}$ & $\varphi_{1,2}$ & $\varphi_{2,1}$ & $\varphi_{2,2}$ & $(\varphi_{1,1} \vee \varphi_{1,2})$ & $(\varphi_{2,1} \vee \varphi_{2,2})$ & $(\varphi_{1,1} \wedge \varphi_{2,1})$ & $(\varphi_{1,2} \vee \varphi_{2,2})$ & $\psi$ & $\chi$ \\ \hline
-		   	0 & 0 & 0 & 0 & 0 & 0 & 0 & TODO & 0 & 0\\
-		   	0 & 0 & 0 & 1 & 0 & 1 & 0 &  & 0 & 0\\
-		   	0 & 0 & 1 & 0 & 0 & 1 & 0 &  & 0 & 0\\
-		   	0 & 0 & 1 & 1 & 0 & 1 & 0 &  & 0 & 1\\
+		   	$\varphi_{1,1}$ & $\varphi_{1,2}$ & $\varphi_{2,1}$ & $\varphi_{2,2}$ & $(\varphi_{1,1} \vee \varphi_{1,2})$ & $(\varphi_{2,1} \vee \varphi_{2,2})$ & $(\varphi_{1,1} \wedge \varphi_{2,1})$ & $(\varphi_{1,2} \wedge \varphi_{2,2})$ & $\psi$ & $\chi$ \\ \hline
+		   	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		   	0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0\\
+		   	0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
+		   	0 & 0 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 0\\
 		   	&&&&&&&&&\\
-		   	0 & 1 & 0 & 0 & 1 & 0 & 0 &  & 0 & 0\\
-		   	0 & 1 & 0 & 1 & 1 & 1 & 0 &  & 1 & 0\\
-		   	0 & 1 & 1 & 0 & 1 & 1 & 0 &  & 1 & 0\\
-		   	0 & 1 & 1 & 1 & 1 & 1 & 0 &  & 1 & 1\\
+		   	0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+		   	0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 1\\
+		   	0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0\\
+		   	0 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & 1 & 1\\
 		   	&&&&&&&&&\\
-		   	1 & 0 & 0 & 0 & 1 & 0 & 0 &  & 0 & 0\\
-		   	1 & 0 & 0 & 1 & 1 & 1 & 0 &  & 1 & 0\\
-		   	1 & 0 & 1 & 0 & 1 & 1 & 1 &  & 1 & 0\\
-		   	1 & 0 & 1 & 1 & 1 & 1 & 1 &  & 1 & 1\\
+		   	1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+		   	1 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 1 & 0\\
+		   	1 & 0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 1\\
+		   	1 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & 1\\
 		   	&&&&&&&&&\\
-		   	1 & 1 & 0 & 0 & 1 & 0 & 0 &  & 0 & 1\\
-		   	1 & 1 & 0 & 1 & 1 & 1 & 0 &  & 1 & 1\\
-		   	1 & 1 & 1 & 0 & 1 & 1 & 1 &  & 1 & 1\\
-		   	1 & 1 & 1 & 1 & 1 & 1 & 1 &  & 1 & 1\\
+		   	1 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+		   	1 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 1\\
+		   	1 & 1 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 1\\
+		   	1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
 		   \end{tabular}\\
 			Damit ist $\psi \ \cancel{\equiv} \ \chi$
 		\end{proof}
@@ -84,8 +85,15 @@
 			\item $ (A_1 \vee \lnot (0 \wedge 1)) $
 			\item $ \lnot (0 \wedge A_2) \vee ((\lnot 1 \vee A_5) \wedge (A_3 \vee \lnot ((A_3 \vee \lnot 0) \vee \lnot A_4))) $
 		\end{compactenum}\ \\
-		\item $ \varphi $ ist unerfüllbar $\Leftrightarrow \varphi \equiv 0$
-		$ \xLeftrightarrow{\text{Dualitätssatz}} \tilde{\varphi} \equiv \tilde{0} \Leftrightarrow \tilde{\varphi} \equiv 1 \xLeftrightarrow{\text{Lemma 2.24b}} \tilde{\varphi} $ ist allgemein gültig.\\
+		\item $ \varphi $ ist unerfüllbar \\
+		$ \Leftrightarrow $ für alle Interpretationen I $ \in \{0,1\} $ gilt: $ I\not\models \varphi$ \\
+		$ \Leftrightarrow $ für alle Interpretationen I $ \in \{0,1\} $ gilt: $ \llbracket\varphi\rrbracket ^I = 0$ \\
+		$ \Leftrightarrow $ für alle Interpretationen I $ \in \{0,1\} $ gilt: $ 1-\llbracket\tilde{\varphi}\rrbracket^{\tilde{I}} = 0 $ \\
+		$ \Leftrightarrow $ für alle Interpretationen I $ \in \{0,1\} $ gilt:$ \llbracket\tilde{\varphi}\rrbracket^{\tilde{I}} = 1 $ \\
+		$ \Leftrightarrow $ für alle Interpretationen I $ \in \{0,1\} $ gilt: $ \tilde{I} \models \tilde{\varphi} $ \\
+		$ \Leftrightarrow \tilde{\varphi} $ ist allgemein gültig 
+			
+
 		\item 2-stelligen Junktor $\tilde{\rightarrow}$, so dass f"ur alle $X, Y \in \mathsf{AS}$ und alle Interpretationen $\mathcal{I}$ gilt: \[\llbracket X \tilde{\rightarrow} Y \rrbracket^\mathcal{I} = 1 - \llbracket X \rightarrow Y \rrbracket^{\tilde{\mathcal{I}}} \]
 		Der Junktor $\tilde{\rightarrow}$ sei definiert durh:\\\\
 		\begin{tabular}{c|c|c|c|c}
@@ -118,8 +126,17 @@
 	
 	\textbf{Aufgabe 4}
 	\begin{compactenum} [(a)]
-		\item Todo
+		\item \begin{compactenum} [(i)]
+			\item false.
+			\item true: X = toto
+			\item true: Essen = 'Essen'
+			\item true: lecker = 'lecker'
+			\item true: X = pizza, Y = salami
+			\item false
+			\item true: Y = a, X = mult(b, a)
 		
-		\item Todo
-	\end{compactenum}
+		\end{compactenum}
+		
+		\item \Tree [.{verfolgt(darth\_vader, X)} [.{mag(luke, X)} [.{verwandt(luke, X)} [.{verwandt(luke, lea)} {X = lea} ] ] [.{gute\_Seite(X)} [.{gute\_Seite(han)} {X = han} ] ] ] ]
+  	\end{compactenum}
 \end{document}
