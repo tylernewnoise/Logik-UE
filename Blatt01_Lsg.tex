@@ -39,8 +39,8 @@
 		\begin{compactenum}[(i)]
 			\item Allgemein gültig, erfüllbar, nicht unerfüllbar!\\
 			Modell: $\mathcal{I}(A_1)=0 $
-			\item Nicht allgemein gültig, erfüllbar, nicht unerfüllbar!\\
-			Modell: $\mathcal{I}(A_0)=1 $ und $\mathcal{I}(A_1)=1 $, nicht erfüllbare Interpretation: $\mathcal{I}(A_1)=0 $ und	$\mathcal{I}(A_2)=0 $
+			\item Allgemein gültig, erfüllbar, nicht unerfüllbar!\\
+			Modell: $\mathcal{I}(A_0)=1 $ und $\mathcal{I}(A_1)=1 $ \\
 			\item Nicht allgemein gültig, nicht erfüllbar, unerfüllbar!
 			\item Nicht allgemein gültig, erfüllbar, nicht unerfüllbar!\\
 			Modell: $\mathcal{I}(A_i)=0 $\ für alle i $\in \mathbb{N} $\\
@@ -58,8 +58,10 @@
 			\item Sei $n$ mod 3 = 1: Es folgt $ \mathcal{I}(A_n)=0 $ und $ \mathcal{I}(A_{n+1})=0 $ und $ \mathcal{I}(A_{n+2})=1 $. Also ist die Aussagenlogische Formel $ ((A_n \leftrightarrow A_{n+1}) \leftrightarrow A_{n+2}) = ((0 \leftrightarrow 0) \leftrightarrow 1) = 1 $ stets erfüllt.
 			\item Sei $n$ mod 3 = 2: Es folgt $ \mathcal{I}(A_n)=0 $ und $ \mathcal{I}(A_{n+1})=1 $ und $ \mathcal{I}(A_{n+2})=0 $. Also ist die Aussagenlogische Formel $ ((A_n \leftrightarrow A_{n+1}) \leftrightarrow A_{n+2}) = ((0 \leftrightarrow 1) \leftrightarrow 0) = 1 $ stets erfüllt.
 		\end{itemize}
-	\end{compactenum}\
-
+	\end{compactenum}
+	
+	\newpage
+	
 	\textbf{Aufgabe 03}
 	\begin{compactenum}[(a)]
 		\item Aussagenlogische Formeln:
@@ -67,37 +69,38 @@
 			\item $(\lnot B \rightarrow K)$
 			\item $((V \vee S) \rightarrow \lnot B)$
 			\item $(K \leftrightarrow (B \wedge \lnot S))$ oder $((K \rightarrow (B \wedge \lnot S)) \wedge ((B \wedge \lnot S) \rightarrow K))$
-			\item $(B \vee V)$
+			\item $(\lnot B \wedge V) \vee (B \wedge \lnot V)$
 		\end{compactenum}
 		\item $\varphi:= (\lnot B \rightarrow K) \wedge ((V \vee S) \rightarrow \lnot B) \wedge ((K \rightarrow (B \wedge \lnot S)) \wedge ((B \wedge \lnot S) \rightarrow K)) \wedge (B \vee V)$
 
 		\item Wahrheitstabelle: \\
 		\begin{tabular}{c|c|c|c|c|c|c|c|c|c}
-			$B$ & $K$ & $S$ & $V$ & $(\lnot B \rightarrow K)$ & $((V \vee S) \rightarrow \lnot B)$ & $(B \wedge \lnot S)$ & $(K \leftrightarrow (B \wedge \lnot S))$ & $(B \vee V)$ & $\varphi$ \\ \hline
+			$B$ & $K$ & $S$ & $V$ & $(\lnot B \rightarrow K)$ & $((V \vee S) \rightarrow \lnot B)$ & $(B \wedge \lnot S)$ & $(K \leftrightarrow (B \wedge \lnot S))$ & $(\lnot B \wedge V) \vee (B \wedge \lnot V)$ & $\varphi$ \\ \hline
 			0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0\\
 			0 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 1 & 0\\
-			0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
-			0 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & 0\\
+			0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0\\
+			0 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 & 0\\
+			&&&&&&&&& \\
 			0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0\\
 			0 & 1 & 0 & 1 & 1 & 1 & 0 & 0 & 1 & 0\\
-			0 & 1 & 1 & 0 & 1 & 1 & 1 & 1 & 0 & 0\\
-			\rowcolor{lightgray}0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+			0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 0 & 0\\
+			0 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 1 & 0\\
+			&&&&&&&&& \\
 			1 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 0\\
-			1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 0\\
+			1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 0 & 0\\
 			1 & 0 & 1 & 0 & 1 & 0 & 0 & 1 & 1 & 0\\
-			1 & 0 & 1 & 1 & 1 & 0 & 0 & 1 & 1 & 0\\
-			\rowcolor{lightgray}1 & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1\\
-			1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 0\\
+			1 & 0 & 1 & 1 & 1 & 0 & 0 & 1 & 0 & 0\\
+			&&&&&&&&& \\
+			\rowcolor{lightgray}1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+			1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 0\\
 			1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0\\
-			1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 0\\
-		\end{tabular}
-		\newpage
+			1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0\\
+		\end{tabular} \ \\
 
 		\item $  \mathcal{I}_1(S)=1 $; $  \mathcal{I}_1(V)=1 $; $  \mathcal{I}_1(K)=1 $; $  \mathcal{I}_1(B)=0 $ : \\
-		$\llbracket \varphi \rrbracket ^{ \mathcal{I}_1} = (\lnot 0 \rightarrow 1) \wedge ((1 \vee 1) \rightarrow \lnot 0) \wedge ((1 \rightarrow (0 \wedge \lnot 1)) \wedge ((0 \wedge \lnot 1) \rightarrow 1)) \wedge (0 \vee 1) = 1 \wedge 1 \wedge 1 \wedge 1 = 1$\\
-		$\Longrightarrow$ Die Interpretation $\mathcal{I}_1$ erfüllt die $\mathsf{AL} \varphi$
-		\item Wenn König Alfons die Maßnahmen aus Teilaufgabe (d) umsetzt, hat er bereits die Anforderungen der EZB erfüllt, da $\mathcal{I}_1 \models \varphi$. \\
-		$ \varphi(B,K,S,V) $ erfüllt allerdings auch bei $\mathcal{I}_2 = \varphi[1,1,0,0]$, somit wird er allen Anforderungen der EZB gerecht, wenn er:
+		$\llbracket \varphi \rrbracket ^{ \mathcal{I}_1} = (\lnot 0 \rightarrow 1) \wedge ((1 \vee 1) \rightarrow \lnot 0) \wedge ((1 \rightarrow (0 \wedge \lnot 1)) \wedge ((0 \wedge \lnot 1) \rightarrow 1)) \wedge ((\lnot 0 \wedge 1)\vee(0 \vee \lnot 1)) = 1 \wedge 1 \wedge 0 \wedge 1 = 0$\\
+		$\Longrightarrow$ Die Interpretation $\mathcal{I}_1$ erfüllt die $\mathsf{AL} \varphi$ nicht!
+		\item Die Interpretation $ \mathcal{I}_2 $ mit $ \mathcal{I}_2(B) = 1,\ \mathcal{I}_2(K) = 1,\ \mathcal{I}_2(S) = 0,\ \mathcal{I}_2(V) = 0 $ erfüllt die Formel $ \varphi $ somit wird König Alfons der Viertel-vor-Zwölfte allen Anforderungen der EZB gerecht, wenn er:
 		\begin{itemize}
 			\item Die Ausgaben für Bildung erhöht
 			\item Die Banken stärker kontrolliert
@@ -106,6 +109,8 @@
 		\end{itemize}
 	\end{compactenum}\
 
+	\newpage
+	
 	\textbf{Aufgabe 04}
 	\begin{compactenum}
 		\item [b)]
