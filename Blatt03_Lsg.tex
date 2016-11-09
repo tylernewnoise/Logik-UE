@@ -42,5 +42,30 @@
 			\item $ (\bigvee\limits_{i = 24}^{42} (\bigvee\limits_{j=37}^{73} (\bigwedge\limits_{k=3}^{4} A_{(i+y) mod\ k}))) \in NNF \in DNF \not\in KNF $
 		\end{compactenum}
 		\item Todo
+	\end{compactenum}\ \\
+	\textbf{Aufgabe 04}\
+	\begin{compactenum} [(a)]
+		\item 
+		\begin{verbatim}
+		tanz(kreis)
+		tanz(hoch(X)) :- tanz(X).
+		tanz(runter(X)) :- tanz(X).
+		tanz(salto(X)) :- tanz(X).
+		\end{verbatim}\
+		\item 
+		\begin{verbatim}
+		gefahr(kreis)
+		gefahr(salto(hoch(X))) :- gefahr(X).
+		gefahr(runter(hoch(X))) :- gefahr(X).
+		gefahr(runter(salto(X))) :- gefahr(salto(X)).
+		gefahr(hoch(X)) :- gefahr(X).
+		\end{verbatim}
+		\item 
+		\begin{verbatim}
+		duett(kreis, kreis).
+		duett(salto(X), salto(Y)) :- duett(X, Y).
+		duett(hoch(X), runter(Y)) :- duett(X, Y).
+		duett(runter(X), hoch(Y)) :- duett(X, Y).
+		\end{verbatim}
 	\end{compactenum}
 \end{document}
