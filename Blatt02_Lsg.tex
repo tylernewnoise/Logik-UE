@@ -13,6 +13,7 @@
 \usepackage{stmaryrd}
 \usepackage{colortbl}
 \usepackage{qtree}
+\usepackage{tikz}
 \usetikzlibrary{matrix,positioning,arrows, automata}
 
 \pagestyle{fancy}
@@ -27,7 +28,7 @@
 	\textbf{Aufgabe 01}
 	\begin{compactenum} [(a)]
 		\item  \begin{tabbing} $
-			\varphi_1 := \bigwedge\limits_{i,j=0}^n $
+			\varphi_1 := \bigwedge\limits_{i,j=0}^{30} $
 			\= $ ((A_{i,j}\wedge \lnot O_{i,j} \wedge \lnot G_{i,j}\wedge \lnot K_{i,j})\vee(\lnot A_{i,j}\wedge O_{i,j}\wedge\lnot G_{i,j}\wedge \lnot K_{i,j}) $ \\
 			\> $ \vee ( \lnot A_{i,j}\wedge \lnot O_{i,j}\wedge G_{i,j}\wedge \lnot K_{i,j})\vee( \lnot A_{i,j}\wedge \lnot O_{i,j}\wedge \lnot G_{i,j}\wedge K_{i,j}))$
 		\end{tabbing}\
@@ -40,7 +41,7 @@
 		\item
 		\begin{itemize}
 			\item $ \varphi_1 \not\equiv \varphi_2$, da $ \llbracket \varphi_1 \rrbracket ^I = 0 \neq \llbracket \varphi_2 \rrbracket ^I = 1 \qquad$ mit $ I(A_0) = 1 $; $ I(A_1) = 1 $ $ (A_2) = 0 $
-			\item $ \varphi_3 \not\equiv \varphi_4$, da $ \llbracket \varphi_3 \rrbracket ^I = 1 \neq \llbracket \varphi_4 \rrbracket ^I = 0 \qquad$ mit $ I(A_0) = 0 $; $ I(A_1) = 1 $
+			\item $ \varphi_3 = (A_0\rightarrow A_1) \equiv (\lnot A_0 \vee A_1) \equiv ((\lnot A_0 \vee A_1)\vee 0) \equiv (\lnot (A_0 \wedge \lnot A_1) \vee 0) \equiv ((A_0 \wedge \lnot A_1)\rightarrow 0) = \varphi_4$
 		\end{itemize}\
 		\item Seien $I = \{i_1, \dots , i_m\}$,  $J = \{j_1, \dots , j_n\} $ endliche Mengen und sei f"ur jedes $i \in I$ und $j \in J$ ein Formel $\varphi_{i, j}$ gegeben.\\
 		$\bigwedge\limits_{i \in I} \bigvee\limits_{j \in J} \varphi_{i, j} \equiv \bigvee\limits_{j \in J} \bigwedge\limits_{i \in I} \varphi_{i, j}$ f.a. $i \in I, j\in J$\\
@@ -84,17 +85,14 @@
 			\item $ A_{42} $
 			\item $ (A_1 \vee \lnot (0 \wedge 1)) $
 			\item $ \lnot (0 \wedge A_2) \vee ((\lnot 1 \vee A_5) \wedge (A_3 \vee \lnot ((A_3 \vee \lnot 0) \vee \lnot A_4))) $
-		\end{compactenum}\ \\
-		\item $ \varphi $ ist unerfüllbar \\
-		$ \Leftrightarrow $ für alle Interpretationen I $ \in \{0,1\} $ gilt: $ I\not\models \varphi$ \\
-		$ \Leftrightarrow $ für alle Interpretationen I $ \in \{0,1\} $ gilt: $ \llbracket\varphi\rrbracket ^I = 0$ \\
-		$ \Leftrightarrow $ für alle Interpretationen I $ \in \{0,1\} $ gilt: $ 1-\llbracket\tilde{\varphi}\rrbracket^{\tilde{I}} = 0 $ \\
-		$ \Leftrightarrow $ für alle Interpretationen I $ \in \{0,1\} $ gilt:$ \llbracket\tilde{\varphi}\rrbracket^{\tilde{I}} = 1 $ \\
-		$ \Leftrightarrow $ für alle Interpretationen I $ \in \{0,1\} $ gilt: $ \tilde{I} \models \tilde{\varphi} $ \\
-		$ \Leftrightarrow \tilde{\varphi} $ ist allgemein gültig 
-			
-
-		\item 2-stelligen Junktor $\tilde{\rightarrow}$, so dass f"ur alle $X, Y \in \mathsf{AS}$ und alle Interpretationen $\mathcal{I}$ gilt: \[\llbracket X \tilde{\rightarrow} Y \rrbracket^\mathcal{I} = 1 - \llbracket X \rightarrow Y \rrbracket^{\tilde{\mathcal{I}}} \]
+		\end{compactenum}\ 
+		\item $ \varphi $ ist unerfüllbar $ \Leftrightarrow $ für jede Interpretation $ \mathcal{I} $ gilt: $ \varphi \equiv 0 $ \\
+		Setze $ 0 = \psi $, nach Dualitätssatz gilt: $ \varphi \equiv \psi \Leftrightarrow \tilde{\varphi} \equiv \tilde{\psi} $ \\
+		Also ist: $ \varphi \equiv 0 \Leftrightarrow \tilde{\varphi} \equiv \tilde{0} \Longleftrightarrow \varphi \equiv 0 \Leftrightarrow \tilde{\varphi} \equiv 1$ \\
+		Also ist für jede Interpretation $ \tilde{\varphi} $ allgemeingültig \\
+		
+		\item \textbf{DIESE AUFGABE IST NICHT KORRIGIERT!!!} \\
+		2-stelligen Junktor $\tilde{\rightarrow}$, so dass f"ur alle $X, Y \in \mathsf{AS}$ und alle Interpretationen $\mathcal{I}$ gilt: \[\llbracket X \tilde{\rightarrow} Y \rrbracket^\mathcal{I} = 1 - \llbracket X \rightarrow Y \rrbracket^{\tilde{\mathcal{I}}} \]
 		Der Junktor $\tilde{\rightarrow}$ sei definiert durh:\\\\
 		\begin{tabular}{c|c|c|c|c}
 			$X$ & $Y$ & $\llbracket X \tilde{\rightarrow} Y \rrbracket^\mathcal{I}$ & $\llbracket X \tilde{\rightarrow} Y \rrbracket^{\tilde{\mathcal{I}}}$ &  $1 - \llbracket X \rightarrow Y \rrbracket^{\tilde{\mathcal{I}}}$\\ 
@@ -108,7 +106,7 @@
 			1 & 1 & 1 & 1 & 0 \\ 
 		\end{tabular} \ \\\\
 		\textbf{Satz 2.28 (Dualit"atssatz der Aussagenlogik)}\\
-		F"ur alle Formeln $\varphi, \chi \in \mathsf{AF}$, in denen keine Implikation vorkommt, gilt: $\varphi \equiv \chi \Leftrightarrow \tilde{\varphi} \equiv \tilde{\chi}$.\\
+		F"ur alle Formeln $\varphi, \chi \in \mathsf{AL}$, in denen keine Implikation vorkommt, gilt: $\varphi \equiv \chi \Leftrightarrow \tilde{\varphi} \equiv \tilde{\chi}$.\\
 		Nach der Definition von $\tilde{\rightarrow}$, wollen wir wissen ob nun der Dualit"atssatz auch f"ur aussagenlogische Formeln mit Implikationen formuliert werden kann. \\
 		Gem"a"s der Induktionsannahme gilt: $\llbracket \tilde{\varphi} \rrbracket^\mathcal{I} = 1 - \llbracket \varphi \rrbracket^{\tilde{\mathcal{I}}}$ und $\llbracket \tilde{\psi} \rrbracket^\mathcal{I} = 1 - \llbracket \psi \rrbracket^{\tilde{\mathcal{I}}}$ f"ur $\mathcal{I}$ eine beliebige Interpretation und f"ur $\varphi, \psi$ beliebige Formeln von $\mathsf{AL}$.\\
 		Es ist nun zu schauen, ob auch $\llbracket \widetilde{\varphi \rightarrow \psi} \rrbracket^\mathcal{I} = 1 - \llbracket \varphi \rightarrow \psi \rrbracket^{\tilde{\mathcal{I}}}$ gilt.\\
@@ -121,22 +119,35 @@
 			1 & 0 & 1 & 1 & 0 & 0 & 1 \\ 
 			1 & 1 & 0 & 1 & 1 & 1 & 0 \\ 
 		\end{tabular} \ \\\\
-		Die Tabelle ist f"ur $\llbracket \tilde{\varphi} \tilde{\rightarrow} \tilde{\psi} \rrbracket^{\mathcal{I}} = 1 - \llbracket \varphi \rightarrow \psi \rrbracket^{\tilde{\mathcal{I}}}$ g"ultig und somit kann man mit der Definition von $\tilde{\rightarrow}$ den Qualit"atssatz auch f"ur aussagenlogische Formeln mit Implikationen formulieren.
+		Die Tabelle ist f"ur $\llbracket \tilde{\varphi} \tilde{\rightarrow} \tilde{\psi} \rrbracket^{\mathcal{I}} = 1 - \llbracket \varphi \rightarrow \psi \rrbracket^{\tilde{\mathcal{I}}}$ g"ultig und somit kann man mit der Definition von $\tilde{\rightarrow}$ den Dualitätssatz auch f"ur aussagenlogische Formeln mit Implikationen formulieren.
 	\end{compactenum}\
+	\newpage
 	
 	\textbf{Aufgabe 4}
 	\begin{compactenum} [(a)]
 		\item \begin{compactenum} [(i)]
-			\item false.
-			\item true: X = toto
-			\item true: Essen = 'Essen'
-			\item true: lecker = 'lecker'
-			\item true: X = pizza, Y = salami
-			\item false
-			\item true: Y = a, X = mult(b, a)
+			\item nicht unifizierbar!
+			\item unifizierbar:  X = toto
+			\item unifizierbar: Essen = 'Essen'
+			\item unifizierbar: lecker = 'lecker' (gleiches Atom)
+			\item unifizierbar: X = pizza, Y = salami
+			\item nicht unifizierbar!
+			\item unifizierbar: Y = a, X = mult(b, a)
 		
-		\end{compactenum}
+		\end{compactenum} \
+				
+		\item Baum: \\
 		
-		\item \Tree [.{verfolgt(darth\_vader, X)} [.{mag(luke, X)} [.{verwandt(luke, X)} [.{verwandt(luke, lea)} {X = lea} ] ] [.{gute\_Seite(X)} [.{gute\_Seite(han)} {X = han} ] ] ] ]
+		\begin{tikzpicture}[sibling distance=10em,
+		every node/.style = {shape=rectangle, rounded corners,
+			draw, align=center,
+			top color=white, bottom color=blue!20}]]
+		\node {?- verfolgt(darth\_vader, Y)}
+		child { node {?- mag(luke\_G1)} 
+			child { node {?- verwandt(luke\_G2)}
+				child { node {} edge from parent node[left,draw=none] {G2=lea}} edge from parent node[left,draw=none] {G1=G2}}
+			child { node {?- gute\_Seite(\_G3)} 
+				child { node {} edge from parent node[left,draw=none] {G3=han}} edge from parent node[right,draw=none] {G1=G3}} edge from parent node[left,draw=none] {Y=G1}};
+		\end{tikzpicture}
   	\end{compactenum}
 \end{document}
