@@ -1,0 +1,75 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[ngerman]{babel}		%dt. Übersetzung und Umlaute
+\usepackage[utf8]{inputenc}		%Umlaute direkt eingeben
+\usepackage{mathtools}			%Mathekrams
+\usepackage{paralist}			%bessere Listen
+\usepackage{amssymb}			%Mathesymbole
+\usepackage{amsthm}			%typesetting theorems (Text über = u.ä.)
+\usepackage{fancyhdr} 			%Headerstyles
+\usepackage{verbatim}			%Sourcecode einfügen
+\usepackage[margin=2.0cm,headheight=40pt,top=3cm]{geometry}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{cancel}
+\usepackage{stmaryrd}
+\usepackage{colortbl}
+\usetikzlibrary{matrix,positioning,arrows, automata}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{Jonas Panizza (567687)\\
+	Fabian Bucher (577513)\\
+	Falko Becker (559053)\\
+	Blatt 04}
+\rhead{ÜG Di 13-15 Jens Keppeler\\
+	ÜG Di 13-15 Jens Keppeler \\
+	ÜG Di 13-15 Jens Keppeler \\
+	Rückgabe ÜG Di 13-15 Jens Keppeler}
+\cfoot{}
+\rfoot{\thepage}
+\begin{document}
+	\parindent0pt
+	\textbf{Aufgabe 01}
+	\begin{compactenum} [(a)]
+		\item $ \varphi_1 = ((R\vee S) \wedge (\lnot R \vee S \vee T) \wedge (\lnot S \vee \lnot T)\wedge (R \vee \lnot T) \wedge (T\vee \lnot S \vee \lnot R \vee U) \wedge (\lnot S \vee \lnot U)) $
+		\item \begin{compactitem}
+			\item $ \mathcal{I} \models \Gamma_1 $ mit $ \mathcal{I}(R) = 1;\ \mathcal{I}(S) = 0;\ \mathcal{I}(T) = 1;\ \mathcal{I}(U) = 0$
+			\item Für alle Interpretationen I gilt: $ \mathcal{I}\not\models\Gamma_2 $ \\ \\
+			Resolutionswiederlegung:
+			\begin{tabbing}
+				\= \qquad \= \qquad\qquad\qquad \= \qquad\qquad \kill
+				\>(1) \> $ \{R, \lnot Q\} $ \> in $ \Gamma_2 $ \\
+				\>(2) \> $ \{\lnot R, \lnot Q\} $ \> in $ \Gamma_2 $ \\
+				\>(3) \> $ \{\lnot Q \} $ \> Resolution von (1) und (2) \\
+				\>(4) \> $ \{Q ,\lnot R\} $ \> in $ \Gamma_2 $\\
+				\>(5) \> $ \{\lnot R\} $ \> Resolution von (3) und (4) \\
+				\>(6) \> $ \{Q, R, \lnot S\} $ \> in $ \Gamma_2 $\\
+				\>(7) \> $ \{Q, \lnot S\} $ \> Resolution von (5) und (6) \\
+				\>(8) \> $ \{\lnot S\} $ \> Resolution von (3) und (7) \\
+				\>(9) \> $ \{Q, R, S\} $ \> in $ \Gamma_2 $ \\
+				\>(10) \> $ \{Q, R\} $ \> Resolution von (8) und (9) \\
+				\>(11) \> $ \{Q\} $ \> Resolution von (5) und (10)\\
+				\>(12) \> $ \ \varnothing $ \> Resolution von (3) und (11) \\
+			\end{tabbing}
+			\item Für alle Interpretationen I gilt: $ \mathcal{I}\not\models\Gamma_3 $ \\ \\
+			Resolutionswiederlegung:
+			
+			\begin{tabbing}
+				\= \qquad \= \qquad\qquad\qquad \= \qquad\qquad \kill
+				\>(1) \> $ \{R\} $ \> in $ \Gamma_3 $ \\
+				\>(2) \> $ \{\lnot R, \lnot Q\} $ \> in $ \Gamma_3 $ \\
+				\>(3) \> $ \{\lnot Q \} $ \> Resolution von (1) und (2) \\
+				\>(4) \> $ \{P ,\lnot R, S\} $ \> in $ \Gamma_3 $\\
+				\>(5) \> $ \{\lnot P, S\} $ \> in $ \Gamma_3 $ \\
+				\>(6) \> $ \{\lnot R, S\} $ \> Resolution von (4) und (5) \\
+				\>(7) \> $ \{S\} $ \> Resolution von (1) und (6) \\
+				\>(8) \> $ \{\lnot S, Q\} $ \> in $ \Gamma_3 $ \\
+				\>(9) \> $ \{Q\} $ \> Resolution von (7) und (8) \\
+				\>(10) \> $ \{\varnothing\} $ \> Resolution von (3) und (9) \\
+			\end{tabbing}
+		\end{compactitem}
+	\end{compactenum}
+	\textbf{Aufgabe 02} \\
+	TODO
+\end{document}
