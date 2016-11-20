@@ -71,5 +71,29 @@
 		\end{compactitem}
 	\end{compactenum}
 	\textbf{Aufgabe 02} \\
-	TODO
+	\underline{Schritt 1:} Wir listen alle Subformeln von $ \varphi  $ auf, die keine Literale sind: \\
+	
+	$ \varphi := (\underbrace{(\underbrace{(P\vee \lnot Q)}_{\psi_3}\wedge S)}_{\psi_1} \rightarrow \underbrace{\lnot \underbrace{(Q \vee \lnot S)}_{\psi_4}}_{\psi_2}) $ \\
+	\begin{tabbing}
+		$ \varphi' :=$ 
+		\= $ \quad X_p $ \qquad \qquad \qquad \qquad \qquad \qquad \qquad \= \\
+		\> $ \wedge (X_\varphi \leftrightarrow (X_{\psi_1}\rightarrow X_{\psi_2})$ \> (da $ \varphi = (\psi_1 \rightarrow \psi_2) $) \\
+		\> $ \wedge (X_{\psi_1} \leftrightarrow (X_{\psi_3} \wedge S)) $ \> (da $ \psi_1 = (\psi_3 \wedge S)) $ \\
+		\> $ \wedge (X_{\psi_2} \leftrightarrow (\lnot X_{\psi_4})) $ \> (da $ \psi_2 = \lnot \psi_4 $) \\
+		\> $ \wedge (X_{\psi_3} \leftrightarrow (P \vee \lnot Q)) $ \> (da $ \psi_3 = (P \vee \lnot Q) $) \\
+		\> $ \wedge (X_{\psi_4} \leftrightarrow (Q \vee \lnot S)) $ \> (da $ \psi_4 = (Q \vee \lnot S) $)
+	\end{tabbing}
+	Es gilt: $ \varphi $ ist erfüllbar $ \Longleftrightarrow  \varphi' $ ist erfüllbar \\
+	\newpage
+	\underline{Schritt 2:} Umwandlung von $ \varphi' $ in eine äquivalente KNF Formel: \\
+	\begin{tabbing}
+		$ \varphi_K := $
+		\= $ \quad X_\varphi $ \\
+		\> $ \wedge (\lnot X_\varphi \vee \lnot X_{\psi_1} \vee X_{\psi_2}) \wedge (X_\varphi \vee X_{\psi_1}) \wedge (X_\varphi \vee \lnot X_{\psi_2}) $ \\
+		\> $ \wedge (\lnot X_{\psi_1} \vee X_{\psi_3}) \wedge (\lnot X_{\psi_1} \vee S) \wedge (\lnot X_{\psi_3} \vee \lnot S \vee X_{\psi_1}) $ \\
+		\> $ \wedge (\lnot X_{\psi_2} \vee \lnot X_{\psi_4}) \wedge (X_{\psi_4} \vee X_{\psi_2}) $ \\
+		\> $ \wedge (\lnot X_{\psi_3} \vee P \vee \lnot Q) \wedge (\lnot P \vee X_{\psi_3}) \wedge (Q \vee X_{\psi_3}) $ \\
+		\> $ \wedge (\lnot X_{\psi_4} \vee Q \vee \lnot S) \wedge (\lnot Q \vee X_{\psi_4}) \wedge (S \vee X_{\psi_4}) $
+	\end{tabbing}
+	Da $ \varphi_K $ äquivalent zu $ \varphi' $ und $ \varphi' $ erfüllbarkeitsäquivalent zu $ \varphi $ ist, ist insgesamt $ \varphi_K $ erfüllbarkeitsäquivalent zu $ \varphi $.
 \end{document}
