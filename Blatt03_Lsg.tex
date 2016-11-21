@@ -17,14 +17,8 @@
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\lhead{Jonas Panizza (567687)\\
-	Fabian Bucher (577513)\\
-	Falko Becker (559053)\\
-	Blatt 03}
-\rhead{ÜG Di 13-15 Jens Keppeler\\
-	ÜG Di 13-15 Jens Keppeler \\
-	ÜG Di 13-15 Jens Keppeler \\
-	Rückgabe ÜG Di 13-15 Jens Keppeler}
+\lhead{\textbf{Blatt 03}}
+\rhead{}
 \cfoot{}
 \rfoot{\thepage}
 \begin{document}
@@ -43,12 +37,12 @@
 			
 			\item $ \varphi'_{i,j} = (A_{i,j} \rightarrow ((O_{i-1,j} \vee O_{i+1,j} \vee O_{i,j-1} \vee O_{i,j+1}) \wedge (\lnot K_{i-1,j} \wedge \lnot K_{i+1,j} \wedge \lnot K_{i,j-1} \wedge \lnot K_{i,j+1})) $ \\
 			$ \varPhi_4 := \{\varphi'_{i,j} : i,j \in \mathbb{Z}\} $
-		\end{compactitem} 
+		\end{compactitem}\
 		\item $ \varphi''_{i,j} := (K_{i-1,j-1}\vee K_{i-1,j}\vee K_{i-1,j+1}\vee K_{i,j-1}\vee K_{i,j}\vee K_{i,j+1}\vee K_{i+1,j-1}\vee K_{i+1,j}\vee K_{i+1,j+1}) $ \\
-		$ \varPhi_2 := \{\varphi''_{i,j} : i,j \in \mathbb{Z}\} $
+		$ \varPhi_2 := \{\varphi''_{i,j} : i,j \in \mathbb{Z}\} $\\
 		\item $ \varphi'''_{i,j} := A_{i,j}\rightarrow(G_{i,j-1}\vee G_{i,j+1}\vee G_{i-1,j}\vee G_{i+1,j}) $ \\
 		$ \varPhi_3 := \{\varphi'''_{i,j} : i,j \in \mathbb{Z} \} $
-		\item \textcolor{red}{TODO}
+		\item 
 	\end{compactenum} \
 	
 	\textbf{Aufgabe 02}
@@ -59,7 +53,7 @@
 			\item $ (((\lnot A_0 \wedge A_1)\vee 1)\wedge \lnot A_0) \not\in NNF \not\in DNF \not\in KNF$
 			\item $ ((\lnot A_4 \wedge A_7)\wedge (A_1 \vee A_1)) \in NNF \not\in DNF \in KNF $
 			\item $ (\bigvee\limits_{i = 24}^{42} (\bigvee\limits_{j=37}^{73} (\bigwedge\limits_{k=3}^{4} A_{(i+y) mod\ k}))) \in NNF \in DNF \not\in KNF $
-		\end{compactenum} \
+		\end{compactenum} \ \\
 		\item \begin{compactitem}
 			\item \begin{tabbing}
 				$ \varphi := $ 
@@ -75,9 +69,9 @@
 				\> $ (\lnot A_3 \underline{\vee} ((A_2 \vee \lnot A_1)\wedge A_0)) \stackrel{\text{Distributivität}}{\equiv}$ \\
 				\> $ ((\lnot A_3 \vee (A_2 \vee \lnot A_1))\wedge (\lnot A_3 \vee A_0))  \in KNF $
 			\end{tabbing}
-		\end{compactitem}
+		\end{compactitem}\
 		\item \begin{compactitem}
-			\item $ \tau_1 = \{\vee, 1\} $ ist nicht adäquat, weil für alle Formeln $ \varphi(X_1,...,X_n) \in AL(\tau_1) $ gilt: $ \varphi[1,...,1] = 1 $ und so die 0 nicht dargestellt werden kann. Beweis Induktion.. \textcolor{red}{TODO} %TODO
+			\item $ \tau_1 = \{\vee, 1\} $ ist nicht adäquat, weil für alle Formeln $ \varphi(X_1,...,X_n) \in AL(\tau_1) $ gilt: $ \varphi[1,...,1] = 1 $ und so die 0 nicht dargestellt werden kann. Beweis per Induktion.. 
 			\item $ \tau_2 = \{\lnot, \rightarrow\} $ ist adäquat. Beweis:
 			\begin{compactitem}
 				\item $ 0 \equiv \lnot (X \rightarrow X) $  für jedes $ X \in AS $
@@ -94,22 +88,22 @@
 	\textbf{Aufgabe 03}
 	\begin{compactenum} [(a)]
 		\item Die Menge alle Interpretationen $ I $ wird beschrieben durch alle Kombinationen von Abbildungen der Form $ I_1: X_i, Y_i \longmapsto I_1(X_i) = I_1(Y_i) = 1 $ und $ I_2 : X_j, Y_j \longmapsto I_2(X_j) = I_2(Y_j) = 0 $ mit $ i,j \in \{1,...,n\} $ und $ i\neq j$. Da jede Klausel $ (X_i \wedge \lnot Y_i) $ nach der Interpretationsvorschrift $ I_1 $ oder $ I_2 $ abgebildet werden kann und es n verschiedene Klauseln gibt, gibt es $ 2^n $ verschiedene Interpretationen.
-		\item \textcolor{red}{TODO}
-		\item \textcolor{red}{TODO}
+		\item 
+		\item 
 	\end{compactenum}
 	\newpage
 	\textbf{Aufgabe 04}\
 	\begin{compactenum} [(a)]
 		\item 
 		\begin{verbatim}
-		tanz(kreis)
+		tanz(kreis).
 		tanz(hoch(X)) :- tanz(X).
 		tanz(runter(X)) :- tanz(X).
 		tanz(salto(X)) :- tanz(X).
 		\end{verbatim}\
 		\item 
 		\begin{verbatim}
-		gefahr(kreis)
+		gefahr(kreis).
 		gefahr(salto(hoch(X))) :- gefahr(X).
 		gefahr(runter(hoch(X))) :- gefahr(X).
 		gefahr(runter(salto(X))) :- gefahr(salto(X)).
