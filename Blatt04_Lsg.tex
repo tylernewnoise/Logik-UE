@@ -18,25 +18,19 @@
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\lhead{Jonas Panizza (567687)\\
-	Fabian Bucher (577513)\\
-	Falko Becker (559053)\\
-	Blatt 04}
-\rhead{ÜG Di 13-15 Jens Keppeler\\
-	ÜG Di 13-15 Jens Keppeler \\
-	ÜG Di 13-15 Jens Keppeler \\
-	Rückgabe ÜG Di 13-15 Jens Keppeler}
+\lhead{\textbf{Blatt 04}}
+\rhead{}
 \cfoot{}
 \rfoot{\thepage}
 \begin{document}
 	\parindent0pt
 	\textbf{Aufgabe 01}
 	\begin{compactenum} [(a)]
-		\item $ \varphi_1 = ((R\vee S) \wedge (\lnot R \vee S \vee T) \wedge (\lnot S \vee \lnot T)\wedge (R \vee \lnot T) \wedge (T\vee \lnot S \vee \lnot R \vee U) \wedge (\lnot S \vee \lnot U)) $
+		\item $ \varphi_1 = ((R\vee S) \wedge (\lnot R \vee S \vee T) \wedge (\lnot S \vee \lnot T)\wedge (R \vee \lnot T) \wedge (T\vee \lnot S \vee \lnot R \vee U) \wedge (\lnot S \vee \lnot U)) $\ \\
 		\item \begin{compactitem}
 			\item $ \mathcal{I} \models \Gamma_1 $ mit $ \mathcal{I}(R) = 1;\ \mathcal{I}(S) = 0;\ \mathcal{I}(T) = 1;\ \mathcal{I}(U) = 0$
 			\item Für alle Interpretationen I gilt: $ \mathcal{I}\not\models\Gamma_2 $ \\ \\
-			Resolutionswiederlegung:
+			Resolutionswiderlegung:
 			\begin{tabbing}
 				\= \qquad \= \qquad\qquad\qquad \= \qquad\qquad \kill
 				\>(1) \> $ \{R, \lnot Q\} $ \> in $ \Gamma_2 $ \\
@@ -53,7 +47,7 @@
 				\>(12) \> $ \ \varnothing $ \> Resolution von (3) und (11) \\
 			\end{tabbing}
 			\item Für alle Interpretationen I gilt: $ \mathcal{I}\not\models\Gamma_3 $ \\ \\
-			Resolutionswiederlegung:
+			Resolutionswiderlegung:
 			
 			\begin{tabbing}
 				\= \qquad \= \qquad\qquad\qquad \= \qquad\qquad \kill
@@ -104,6 +98,50 @@
 		$ \varphi_n := \bigwedge\limits_{i = 1}^n \bigwedge\limits_{j = 1}^n A_{i,j}^t \wedge \bigwedge\limits_{i=1}^{n-1} \bigwedge\limits_{j=1}^n (\bigwedge\limits_{(t,t') \not\in H} \lnot (A_{i,j}^t \wedge A_{i+1,j}^{t'}) \wedge (\bigwedge\limits_{(t,t') \not\in V} \lnot (A_{j,i}^t \wedge A_{j,i+1}^{t'})) $ \\
 		$ \Gamma_n := \{\varphi_n\} $
 		
-		\item TODO
+		\item 
+	\end{compactenum}\ \\
+
+	\textbf{Aufgabe 04}
+	\begin{compactenum} [(a)]
+		\item \begin{compactenum} [(i)]
+			\item \verb|X = a, Y = b.|
+			\item \verb|c|
+			\item \verb|Y = b, Z = a.|
+			\item \verb|T = [c, d], X = a, H = b.|
+		\end{compactenum}\
+		\item 
+		
+		\newpage
+		\item 
+		\begin{verbatim}
+				nimm(E, [E|Y], Y).
+				nimm(E, [H|Y], [H|Z]) :- nimm(E, Y, Z).
+		\end{verbatim}
+		\item 
+		\begin{verbatim}
+			nimm(E, [E|Y], Y).
+			nimm(E, [H|Y], [H|Z]) :- nimm(E, Y, Z).
+			
+			resolvente(L1, L2, R):-nimm(neg(E), L1, R1),
+			nimm(pos(E), L2, R2),
+			union(R1, R2, R).
+			
+			resolvente(L1, L2, R):-nimm(pos(E), L1, R1),
+			nimm(neg(E), L2, R2),
+			union(R1, R2, R).
+		\end{verbatim}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	\end{compactenum}
+
 \end{document}
