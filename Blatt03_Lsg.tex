@@ -41,10 +41,19 @@
 		\item $ \varphi''_{i,j} := (K_{i-1,j-1}\vee K_{i-1,j}\vee K_{i-1,j+1}\vee K_{i,j-1}\vee K_{i,j}\vee K_{i,j+1}\vee K_{i+1,j-1}\vee K_{i+1,j}\vee K_{i+1,j+1}) $ \\
 		$ \varPhi_2 := \{\varphi''_{i,j} : i,j \in \mathbb{Z}\} $\\
 		\item $ \varphi'''_{i,j} := A_{i,j}\rightarrow(G_{i,j-1}\vee G_{i,j+1}\vee G_{i-1,j}\vee G_{i+1,j}) $ \\
-		$ \varPhi_3 := \{\varphi'''_{i,j} : i,j \in \mathbb{Z} \} $
-		\item 
+		$ \varPhi_3 := \{\varphi'''_{i,j} : i,j \in \mathbb{Z} \} $\ \\
+		\item Die Bedingungen sind auf Infinita erf"ullbar $\Leftrightarrow$ f"ur jedes endliche Teilst"uck sind die Bedingungen erf"ullbar.\\
+		Sei $\Phi_{i,j,k,l}$ mit $i,j \in \mathbb{Z}$ und $k,l \in \mathbb{N}_{\geq 1}$ die Teilmenge von $\Phi$, die exakt alle Formeln $\varphi \in \Phi$ enth"alt, deren Aussagensymbole mit Index $\tilde{i}, \tilde{j}$ mit $i \leq \tilde{i} \leq i + k$ und $j \leq \tilde{j} \leq j + l$ vorkommen. Die Formelmenge $\Phi_{i,k,j,l}$ ist endlich, da jedes Aussagensymbol in endlich vielen Formeln vorkommt.\\
+		Die Bedingungen gelten auf Infinita.\\
+		$\Leftrightarrow$ $\Phi$ ist erf"ullbar.\\
+		$\Leftrightarrow$ Jede endliche Teilmenge $\varphi \subseteq \Phi$ ist erf"ullbar.\\
+		$\Leftrightarrow$ F"ur jedes $i,j \in \mathbb{Z}$ und $k,l \in \mathbb{N}_{\geq 1}$ ist $\Phi_{i,j,k,l}$ erf"ullbar.\\
+		Zwischenschritte f"ur obiges:\\
+		$\Rightarrow$ Es gibt $\psi_1, \dots , \psi_r \subseteq \Phi$, so dass $\Phi_{i,j,k,l} \subseteq \underbrace{\underbrace{\psi_1}_{\text{erf"ullbar}} \cup \dots \cup \underbrace{\psi_r}_{\text{erf"ullbar}}}_{\text{erf"ullbar}}$\\
+		$\Leftarrow$ W"ahle $i,j \in \mathbb{Z}$ und $k,l \in \mathbb{N}_{\geq 1}$, so dass $\psi \subseteq \Phi_{i,j,k,l}$. Gem"a"s Voraussetzung ist $\Phi_{i,j,k,l}$ erf"ullbar und damit insbesondere $\psi$.\\
+		$\Leftrightarrow$ F"ur jedes endliche Teilst"uck gelten die Bedingungen.\\
+		
 	\end{compactenum} \
-	
 	\textbf{Aufgabe 02}
 	\begin{compactenum} [(a)]
 		\item 
@@ -84,14 +93,13 @@
 			\end{compactitem}
 		\end{compactitem}
 	\end{compactenum} \
-	\\
+	\newpage
 	\textbf{Aufgabe 03}
 	\begin{compactenum} [(a)]
 		\item Die Menge alle Interpretationen $ I $ wird beschrieben durch alle Kombinationen von Abbildungen der Form $ I_1: X_i, Y_i \longmapsto I_1(X_i) = I_1(Y_i) = 1 $ und $ I_2 : X_j, Y_j \longmapsto I_2(X_j) = I_2(Y_j) = 0 $ mit $ i,j \in \{1,...,n\} $ und $ i\neq j$. Da jede Klausel $ (X_i \wedge \lnot Y_i) $ nach der Interpretationsvorschrift $ I_1 $ oder $ I_2 $ abgebildet werden kann und es n verschiedene Klauseln gibt, gibt es $ 2^n $ verschiedene Interpretationen.
 		\item 
 		\item 
-	\end{compactenum}
-	\newpage
+	\end{compactenum}\ \\
 	\textbf{Aufgabe 04}\
 	\begin{compactenum} [(a)]
 		\item 
