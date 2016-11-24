@@ -1,0 +1,102 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[ngerman]{babel}		%dt. Übersetzung und Umlaute
+\usepackage[utf8]{inputenc}		%Umlaute direkt eingeben
+\usepackage{mathtools}			%Mathekrams
+\usepackage{paralist}			%bessere Listen
+\usepackage{amssymb}			%Mathesymbole
+\usepackage{amsthm}			%typesetting theorems (Text über = u.ä.)
+\usepackage{fancyhdr} 			%Headerstyles
+\usepackage{verbatim}			%Sourcecode einfügen
+\usepackage[margin=2.0cm,headheight=40pt,top=3cm]{geometry}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{cancel}
+\usepackage{stmaryrd}
+\usepackage{colortbl}
+\usetikzlibrary{matrix,positioning,arrows, automata}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{\textbf{Blatt 04}}
+\rhead{}
+\cfoot{}
+\rfoot{\thepage}
+\begin{document}
+	\parindent0pt
+	\textbf{Aufgabe 01}
+	\begin{compactenum} [(a)]
+		\item 
+		\item 
+		\item 
+	\end{compactenum}
+	\textbf{Aufgabe 02} \\
+	
+	\textbf{Aufgabe 03}
+	\begin{compactenum} [(a)]
+		\item
+		\item 
+		\item 
+		\item 
+	\end{compactenum}\ \\
+
+	\textbf{Aufgabe 04}
+	\begin{compactenum} [(a)]
+		\item \begin{compactenum} [(V 1)]
+			\item 
+			\begin{verbatim}
+			% Version 1
+			ziffer(0).
+			ziffer(1).
+			ziffer(2).
+			ziffer(3).
+			ziffer(4).
+			ziffer(5).
+			ziffer(6).
+			ziffer(7).
+			ziffer(8).
+			ziffer(9).
+			
+			raetsel2(A, B, C, D, E, F, G, H) :-
+				ziffer(A), ziffer(B), ziffer(D), ziffer(E),
+				C is 10 * D + E - (10 * A + B), ziffer(C), C =\= 0,
+				G is 2* C , ziffer(G),
+				10*A+B - C =:= 10 * A + D,
+				ziffer(F), ziffer(H),
+				(100 * D + 10 * F + B) / G =:= 10 * H + D,
+				(10 * A + B) ** 2 =:= 100 * D + 10 * F + B,
+				(10 * D + E) + (10*A + D) =:= 10*H + D.
+			\end{verbatim}
+			\item 
+			\begin{verbatim}
+			% Version 2
+			ziffer(0).
+			ziffer(1).
+			ziffer(2).
+			ziffer(3).
+			ziffer(4).
+			ziffer(5).
+			ziffer(6).
+			ziffer(7).
+			ziffer(8).
+			ziffer(9).
+			
+			raetsel2(A, B, C, D, E, F, G, H) :-
+				ziffer(A), ziffer(B), ziffer(C), ziffer(D),
+				ziffer(E), ziffer(F), ziffer(G), ziffer(H),
+				10 * A + B + C =:= 10 * D + E,
+				(10 * A + B) ** 2 =:= 100 * D + 10 * F + B,
+				2*C =:= G,
+				10 * D + E + 10 * A + D =:= 10 * H + D,
+				10 * A + B - C =:= 10 * A + D,
+				G =\= 0,
+				(100 * D + 10 * F + B)/ G =:=  10 * H + D.
+			\end{verbatim}
+		\end{compactenum}\
+		\item 
+		\begin{verbatim}
+		
+		\end{verbatim}
+	\end{compactenum}
+
+\end{document}
