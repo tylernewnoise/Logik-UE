@@ -26,12 +26,90 @@
 	\parindent0pt
 	\textbf{Aufgabe 01}
 	\begin{compactenum} [(a)]
-		\item 
-		\item 
-		\item 
+		\item $ \Gamma_1 = \{\{\lnot R,S\}, \{\lnot S, T\}, \{R,\lnot T\} \{R,S,T\},\{ \lnot R, \lnot S, \lnot T \} \} $ \\
+		
+		Resolutionswiderlegung:
+		\begin{tabbing}
+			\= \qquad \= \qquad\qquad\qquad \= \qquad\qquad \kill
+			\>(1) \> $ \{\lnot R, S \} $ \> in $ \Gamma_1 $ \\
+			\>(2) \> $ \{R, S, T\} $ \> in $ \Gamma_1 $ \\
+			\>(3) \> $ \{S,T \} $ \> Resolution von (1) und (2) \\
+			\>(4) \> $ \{\lnot S, T\} $ \> in $ \Gamma_1 $\\
+			\>(5) \> $ \{T\} $ \> Resolution von (3) und (4) \\
+			\>(6) \> $ \{R, \lnot T\} $ \> in $ \Gamma_1 $\\
+			\>(7) \> $ \{R\} $ \> Resolution von (5) und (6) \\
+			\>(8) \> $ \{S\} $ \> Resolution von (1) und (7) \\
+			\>(9) \> $ \{\lnot R, \lnot S, \lnot T\} $ \> in $ \Gamma_1 $ \\
+			\>(10) \> $ \{\lnot R, \lnot T\} $ \> Resolution von (8) und (9) \\
+			\>(11) \> $ \{\lnot T\} $ \> Resolution von (7) und (10)\\
+			\>(12) \> $ \ \varnothing $ \> Resolution von (5) und (11) 
+		\end{tabbing}
+		$ \Rightarrow \Gamma_1 $ ist unerfüllbar. \\
+		
+		\item TODO
+		\item TODO
 	\end{compactenum}
-	\textbf{Aufgabe 02} \\
-	
+	\newpage
+	\textbf{Aufgabe 02}
+	\begin{tabbing}
+			$ \Gamma = $ \= $ \{\{R,\lnot S,T\},\{U,W\},\{\lnot Q,\lnot R,S\},\{\lnot T,U\},\{R,\lnot U,\lnot W\},\{Q,R,S,T\}, $ \\
+			\> $ \{Q,\lnot T\},\{\lnot Q, \lnot R,T\},\{\lnot R,\lnot S,\lnot T,\lnot U\},\{\lnot U,W\},\{U,\lnot W\},\{Q\}\} $
+	\end{tabbing}
+	\begin{compactenum} [(1)]
+		\item Unit Propagation mit \{Q\} liefert die Klauselmenge \\
+		\begin{tabbing}
+			$ \Gamma' =$ \= $ \{\{R,\lnot S,T\},\{U,W\},\{\lnot R,S\},\{\lnot T,U\},\{R,\lnot U,\lnot W\},\cancel{\{Q,R,S,T\}},$ \\
+		\> $\cancel{\{Q,\lnot T\}},\{\lnot R,T\},\{\lnot R,\lnot S,\lnot T,\lnot U\},\{\lnot U,W\},\{U,\lnot W\},\cancel{\{Q\}}\} $
+		\end{tabbing} \
+		
+		\item Keine weitere Vereinfachung $ \Gamma' $ möglich. $ \Gamma' \neq \emptyset $. $ \emptyset \not\in \Gamma'.$ Wähle das Literal $ \lambda := R $ und wende den Algorithmus rekursiv auf $ \Gamma' \cup \{\{R\}\} $ an.\\
+		
+		\item Unit Propagation mit \{R\} liefert die Klauselmenge \\
+		$ \cancel{\{\{R,\lnot S,T\}},\{U,W\},\{S\},\{\lnot T,U\},\cancel{\{R,\lnot U,\lnot W\}}, \{T\},\{\lnot S,\lnot T,\lnot U\},\{\lnot U,W\},\{U,\lnot W\}, \cancel{\{R\}} \} $ \\
+		
+		\item Unit Propagation mit \{S\} liefert die Klauselmenge \\
+		$ \{\{U,W\},\cancel{\{S\}},\{\lnot T,U\}, \{T\},\{\lnot T,\lnot U\},\{\lnot U,W\},\{U,\lnot W\}\} $\\
+		
+		\item Unit Propagation mit \{T\} liefert die Klauselmenge \\
+		$ \{\{U,W\},\{,U\}, \cancel{\{T\}},\{\lnot U\},\{\lnot U,W\},\{U,\lnot W\}\} $\\
+		
+		\item Unit Propagation mit \{U\} liefert die Klauselmenge \\
+		$ \{\cancel{\{U,W\}},\cancel{\{,U\}}, \emptyset,\{W\},\cancel{\{U,\lnot W\}}\} $ \\
+		Jetzt ist $ \emptyset $ in der Klauselmenge enthalten, d.h. die Klauselmenge ist nicht erfüllbar. Daher: \\
+		
+		\item Backtracking, zurück zu Schritt (2): \\
+		Wende den Algorithmus auf $ \Gamma' \cup \{\{\lnot R\}\} $ an.\\
+		
+		\item Unit Propagation mit $\{\lnot R\}$ liefert die Klauselmenge \\
+		$ \{\{\lnot S,T\},\{U,W\},\cancel{\{\lnot R,S\}},\{\lnot T,U\},\{\lnot U,\lnot W\}, \cancel{\{\lnot R,T\}},\cancel{\{\lnot R,\lnot S,\lnot T,\lnot U\}},\{\lnot U,W\},\{U,\lnot W\},\cancel{\{\lnot R \}}\} $\\
+		
+		\item Pure Literal Rule mit $ \lnot S $ liefert die Klauselmenge \\
+		$ \cancel{\{\{\lnot S,T\}},\{U,W\},\{\lnot T,U\},\{\lnot U,\lnot W\}, \{\lnot U,W\},\{U,\lnot W\}\} $\\
+		
+		\item Pure Literal Rule mit $ \lnot T $ liefert die Klauselmenge \\
+		$ \Gamma'' := \{\{U,W\},\cancel{\{\lnot T,U\}},\{\lnot U,\lnot W\}, \{\lnot U,W\},\{U,\lnot W\}\} $\\
+		
+		\item Keine weitere Vereinfachung $ \Gamma'' $ möglich. $ \Gamma'' \neq \emptyset $. $ \emptyset \not\in \Gamma''.$ Wähle das Literal $ \lambda := U $ und wende den Algorithmus rekursiv auf $ \Gamma' \cup \{\{U\}\} $ an.\\
+		
+		\item Unit Propagation mit \{U\} liefert die Klauselmenge \\
+		$ \cancel{\{\{U,W\}},\{\lnot W\}, \{W\},\cancel{\{U,\lnot W\}},\cancel{\{U\}}\} $\\
+		
+		\item Unit Propagation mit \{W\} liefert die Klauselmenge \\
+		$ \{ \emptyset, \cancel{\{W\}}\} $ \\
+		Jetzt ist $ \emptyset $ in der Klauselmenge enthalten, d.h. die Klauselmenge ist nicht erfüllbar. Daher: \\
+		
+		\item Backtracking, zurück zu Schritt (11): \\
+		Wende den Algorithmus auf $ \Gamma'' \cup \{\{\lnot U\}\} $ an.\\
+		
+		\item Unit Propagation mit $\{\lnot U\}$ liefert die Klauselmenge \\
+		$ \{\{W\},\cancel{\{\lnot U,\lnot W\}}, \cancel{\{\lnot U,W\}},\{\lnot W\}\} $\\
+		
+		\item Unit Propagation mit $\{W\}$ liefert die Klauselmenge \\
+		$ \{\cancel{\{W\}},\emptyset\} $ \\
+		Jetzt ist $ \emptyset $ in der Klauselmenge enthalten, d.h. die Klauselmenge ist nicht erfüllbar. Da kein weiteres Backtracking mehr möglich ist, ist die Klauselmenge $ \Gamma $ unerfüllbar.
+	\end{compactenum}
+
+	\newpage
 	\textbf{Aufgabe 03}
 	\begin{compactenum} [(a)]
 		\item
