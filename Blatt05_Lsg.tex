@@ -46,8 +46,11 @@
 		\end{tabbing}
 		$ \Rightarrow \Gamma_1 $ ist unerfüllbar. \\
 		
-		\item TODO
-		\item TODO
+		\item TODO und keeen Bock drauf! \\
+		
+		\item Die Umkehrung gilt nicht! Gegenbeispiel: \\
+		$ \Gamma := \{\{S,T\}, \{A,R\} \} $ und $ \delta:= 1 $ \\
+		$ \Rightarrow \Gamma \models \delta $ aber $ \Gamma \nvdash_R \delta $
 	\end{compactenum}
 	\newpage
 	\textbf{Aufgabe 02}
@@ -112,12 +115,45 @@
 	\newpage
 	\textbf{Aufgabe 03}
 	\begin{compactenum} [(a)]
-		\item
-		\item 
-		\item 
-		\item 
+		\item \begin{tabbing}
+			$ \varphi = $ \= $R \wedge (0 \rightarrow T) \wedge (1 \rightarrow (P\vee \lnot Q)) \wedge (S \rightarrow 0) \wedge ((R \wedge \lnot S \wedge T) \rightarrow \lnot W) \wedge (R \vee \lnot T) \stackrel{\text{elim. Implikationen}}{\equiv}$ \\
+			\> $ R \wedge (1 \vee T) \wedge (0 \vee (P \vee \lnot Q)) \wedge (\lnot S \vee 0) \wedge (\lnot (R \wedge \lnot S \wedge T) \vee \lnot W) \wedge (R \vee \lnot T) \equiv $ \\
+			\> $ R \wedge (P \vee \lnot Q) \wedge \lnot S \wedge (\lnot R \vee S \vee \lnot T \vee \lnot W) \wedge (R \vee \lnot T) $
+		\end{tabbing} 
+		Entspricht der Hornerklauselmenge: \\
+		$ \Phi := \{\{R\}, \{P,\lnot Q\},\{\lnot S\},\{\lnot R, S, \lnot T,\lnot W\},\{R,\lnot T\}\} $ \\
+		
+		\item $ \Gamma = \{\{U\}, \{W\}, \{V,\lnot W\}, \{S,\lnot T\},\{U,\lnot V, \lnot W\},\{\lnot T,\lnot V\},\{S,\lnot U,\lnot V\},\{\lnot S,\lnot T\}\} $\\
+		
+		\underline{1. Schleifendurchlauf: }\\
+		$ \emptyset \not\in \Gamma. $ Wähle \{U\} $ \in \Gamma $, streiche $ \lnot U $ aus allen Klauseln in $ \Gamma $, und streiche alle Klauseln, die $ U $ enthalten.\\
+		$ \Gamma = \{\cancel{\{U\}}, \{W\}, \{V, \lnot W\}, \{S,\lnot T\},\cancel{\{U, \lnot V, \lnot W\}}, \{\lnot T\lnot V\},\{S,\lnot V\},\{\lnot S, \lnot T\}\} $\\
+		
+		\underline{2. Schleifendurchlauf: }\\
+		$ \emptyset \not\in \Gamma. $ Wähle \{W\} $ \in \Gamma $, streiche $ \lnot W $ aus allen Klauseln in $ \Gamma $, und streiche alle Klauseln, die $ W $ enthalten.\\
+		$ \Gamma = \{\cancel{\{W\}},\{V\},\{S,\lnot S\},\{\lnot T, \lnot V\},\{S,\lnot V\},\{\lnot S,\lnot T\}\} $\\
+		
+		\underline{3. Schleifendurchlauf: }\\
+		$ \emptyset \not\in \Gamma. $ Wähle \{V\} $ \in \Gamma $, streiche $ \lnot V $ aus allen Klauseln in $ \Gamma $, und streiche alle Klauseln, die $ V $ enthalten.\\
+		$ \Gamma = \{\cancel{\{V\}}, \{S, \lnot T\}, \{\lnot T\}, \{S\}, \{\lnot S, \lnot T\}\} $\\
+		
+		\underline{4. Schleifendurchlauf: }\\
+		$ \emptyset \not\in \Gamma. $ Wähle \{S\} $ \in \Gamma $, streiche $ \lnot S $ aus allen Klauseln in $ \Gamma $, und streiche alle Klauseln, die $ S $ enthalten.\\
+		$ \Gamma = \{\cancel{\{S,\lnot T\}}, \{\lnot T\}, \cancel{\{S\}}, \{\lnot T\}\} $\\
+		
+		\underline{5. Schleifendurchlauf: }\\
+		$ \emptyset \not\in \Gamma. \Gamma $ enthällt keine Tatsachenklausel.\\
+		D.h.: Halte mit Ausgabe 'erfüllbar'.\\
+		
+		\item \begin{compactenum} [(i)]
+			\item $ \varphi := ((S\vee T\vee A \vee R)\wedge (W\vee A \vee R\vee S)) $ ist eine Formel in KNF und keine Hornformel, da in den disjunktiven Klauseln mehr als ein positives Literal vorkommt. Es gibt keine äquivalente Hornformel, da man durch Umformung von $ \varphi $ (mit z.B. De Morgan) zwar negative Literale erhalten kann, aber die resultierende Formel $ \varphi' $ nicht mehr in KNF ist. 
+			\item Es gibt allerdings zu jede Formel $\varphi \in AL $ eine erfüllbarkeitsäquivalente Hornformel. Da Erfüllbarkeitsäquivalenz eine schwächere Eigenschaft gegenüber der Äquivalenz ist, lässt sich leicht eine Hornformel konstruieren, die mit der selben Interpretation erfüllt wie $ \varphi $.
+		\end{compactenum}
+		
+		\item Obwohl $ \Gamma_1 $ aus Aufgabe 1a unerfüllbar ist, würde der Streichungsalgorithmus die Ausgabe: 'erfüllbar' liefern, da $ \Gamma_1 $ keine Tatsachenklausel enthält. Der Streichungsalgorithmus erwartet eine endliche Menge von Hornklauseln als Eingabe, $ \Gamma_1 $ ist allerdings keine solche Menge, da die Klausel $ \{R,S,T\} $ mehr als ein positives Literal besitzt. 
 	\end{compactenum}\ \\
 
+	\newpage
 	\textbf{Aufgabe 04}
 	\begin{compactenum} [(a)]
 		\item \begin{compactenum} [(V 1)]
