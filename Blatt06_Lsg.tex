@@ -20,14 +20,8 @@
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\lhead{Jonas Panizza (567687)\\
-	Fabian Bucher (577513)\\
-	Falko Becker (559053)\\
-	Blatt 06} %BLATT-NR BEI BEDARF ÄNDERN!
-\rhead{ÜG Di 13-15 Jens Keppeler\\
-	ÜG Di 13-15 Jens Keppeler \\
-	ÜG Di 13-15 Jens Keppeler \\
-	Rückgabe ÜG Di 13-15 Jens Keppeler}
+\lhead{Blatt 06}
+\rhead{}
 \cfoot{}
 \rfoot{\thepage}
 \begin{document}
@@ -71,8 +65,7 @@
 			\> $= f(f($Stein,Spock$),$Papier$) = f($Spock,Papier$) = $ Papier 
 		\end{tabbing}
 	\end{compactitem} \
-	\newpage
-	
+		
 	\textbf{Aufgabe 03}\\
 	\begin{compactenum} [(a)]
 		\item $ \sigma $-Term, atomare $ \sigma $-Formel und/oder FO[$ \sigma $]-Formel \\
@@ -84,7 +77,7 @@
 			(iii) & kein $ \sigma $-Term, da u.a. $ R \not\in A_{\sigma -Terme}$ & keine atomare $ \sigma $-Formel, da diese kein '$ \vee $' beinhalten darf & keine FO[$ \sigma $]-Formel, da die Veroderung von einem $ \sigma $-Term mit einer FO[$ \sigma $]-Formel keine FO[$ \sigma $]-Formel ergibt \\ \hline
 			(iv) & kein $ \sigma $-Term, da u.a. $ R \not\in A_{\sigma -Terme}$ & keine atomare $ \sigma $-Formel, da diese u.a. kein '$ \wedge $' beinhalten darf & keine FO[$ \sigma $]-Formel, da genau genommen der '$ \leftrightarrow $'-Pfeil nicht zu den rekursiven Regeln der FO[$ \sigma $]-Formel Definition gehört 
 		\end{tabular} \\
-		
+		\newpage
 		\item \begin{compactitem}
 			\item $ \mathcal{A} \not\cong \mathcal{B} $. Begründung: Angenommen es ex. ein Isomorphismus $ \pi : \mathcal{A} \rightarrow \mathcal{B} $, dann folgt: \\
 			\begin{compactitem}
@@ -105,6 +98,36 @@
 				$ \pi(A) $ & c & d & e & b & a
 			\end{tabular}
 		\end{compactitem}
-	\end{compactenum}
-		
+	\end{compactenum}\ \\ \\
+		\textbf{Aufgabe 03}\\
+		\begin{compactenum} [(a)]
+			\item \ \\ \includegraphics[width=4.5cm]{Blatt06_4a}\\
+			\item 
+			\begin{verbatim}
+				tree(leaf(_)).
+				tree(node(L, R)) :- tree(L), tree(R).	
+			\end{verbatim} \ \\
+			\item 
+			\begin{verbatim}
+				Inhalt..label(leaf(X), X).
+				label(node(L, _), X) :- label(L,X).
+				label(node(_, R), X) :- label(R,X).
+			\end{verbatim} \\
+			\item 
+			\begin{verbatim}
+				verkettet([], X, X).
+				verkettet([H|T], X, [H|Y]) :-
+				verkettet(T, X, Y).
+				
+				append([], Y, Y).
+				append([H|T], Y, [H|T2]) :- verkettet(T, Y, T2).
+			
+				labels(leaf(X), [X]).
+				labels(node(L, R), X) :-
+				labels(L, X1),
+				labels(R, X2),
+				verkettet(X1, X2, X).
+			\end{verbatim}
+			
+		\end{compactenum}
 \end{document}
