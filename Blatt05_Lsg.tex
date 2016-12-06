@@ -46,11 +46,10 @@
 		\end{tabbing}
 		$ \Rightarrow \Gamma_1 $ ist unerfüllbar. \\
 		
-		\item TODO und keeen Bock drauf! \\
+		\item ...\\
 		
 		\item Die Umkehrung gilt nicht! Gegenbeispiel: \\
-		$ \Gamma := \{\{S,T\}, \{A,R\} \} $ und $ \delta:= 1 $ \\
-		$ \Rightarrow \Gamma \models \delta $ aber $ \Gamma \nvdash_R \delta $
+		...
 	\end{compactenum}
 	\newpage
 	\textbf{Aufgabe 02}
@@ -139,7 +138,7 @@
 		
 		\underline{4. Schleifendurchlauf: }\\
 		$ \emptyset \not\in \Gamma. $ Wähle \{S\} $ \in \Gamma $, streiche $ \lnot S $ aus allen Klauseln in $ \Gamma $, und streiche alle Klauseln, die $ S $ enthalten.\\
-		$ \Gamma = \{\cancel{\{S,\lnot T\}}, \{\lnot T\}, \cancel{\{S\}}$\\
+		$ \Gamma = \{\cancel{\{S,\lnot T\}}, \{\lnot T\}, \cancel{\{S\}} \} $\\
 		
 		\underline{5. Schleifendurchlauf: }\\
 		$ \emptyset \not\in \Gamma. \Gamma $ enthällt keine Tatsachenklausel.\\
@@ -147,7 +146,11 @@
 		
 		\item \begin{compactenum} [(i)]
 			\item $ \varphi := ((S\vee T\vee A \vee R)\wedge (W\vee A \vee R\vee S)) $ ist eine Formel in KNF und keine Hornformel, da in den disjunktiven Klauseln mehr als ein positives Literal vorkommt. Es gibt keine äquivalente Hornformel, da man durch Umformung von $ \varphi $ (mit z.B. De Morgan) zwar negative Literale erhalten kann, aber die resultierende Formel $ \varphi' $ nicht mehr in KNF ist. 
-			\item Es gibt allerdings zu jede Formel $\varphi \in AL $ eine erfüllbarkeitsäquivalente Hornformel. Da Erfüllbarkeitsäquivalenz eine schwächere Eigenschaft gegenüber der Äquivalenz ist, lässt sich leicht eine Hornformel konstruieren, die mit der selben Interpretation erfüllt wie $ \varphi $.
+			\item Es gibt allerdings zu jede Formel $\varphi \in AL $ eine erfüllbarkeitsäquivalente Hornformel.\\
+			\underline{1.Fall:} Sei $ \varphi \in AL $ erfüllbar. \\
+			Wähle $ \varphi' := S \in AL \Rightarrow \varphi$ ist  erfüllbarkeitsäquivalent zu $ \varphi' $. \\
+			\underline{2.Fall:} Sei $ \psi \in AL $ unerfüllbar. \\
+			Wähle $ \psi' := (\lnot S \wedge S) \Rightarrow \psi$ ist  erfüllbarkeitsäquivalent zu $ \psi' $. \\
 		\end{compactenum}
 		
 		\item Obwohl $ \Gamma_1 $ aus Aufgabe 1a unerfüllbar ist, würde der Streichungsalgorithmus die Ausgabe: 'erfüllbar' liefern, da $ \Gamma_1 $ keine Tatsachenklausel enthält. Der Streichungsalgorithmus erwartet eine endliche Menge von Hornklauseln als Eingabe, $ \Gamma_1 $ ist allerdings keine solche Menge, da die Klausel $ \{R,S,T\} $ mehr als ein positives Literal besitzt. 
