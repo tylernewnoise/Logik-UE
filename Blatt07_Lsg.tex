@@ -10,6 +10,7 @@
 \usepackage[margin=2.0cm,headheight=40pt,top=3cm]{geometry}
 \usepackage{tikz}
 \usepackage{cancel}
+\usepackage{mathabx} 
 \usepackage{stmaryrd}
 \usepackage{colortbl}
 \usetikzlibrary{matrix,positioning,arrows, automata}
@@ -17,14 +18,8 @@
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\lhead{Jonas Panizza (567687)\\
-	Fabian Bucher (577513)\\
-	Falko Becker (559053)\\
-	Blatt 07} %BLATT-NR BEI BEDARF ÄNDERN!
-\rhead{ÜG Di 13-15 Jens Keppeler\\
-	ÜG Di 13-15 Jens Keppeler \\
-	ÜG Di 13-15 Jens Keppeler \\
-	Rückgabe ÜG Di 13-15 Jens Keppeler}
+\lhead{}
+\rhead{}
 \cfoot{}
 \rfoot{\thepage}
 \begin{document}
@@ -32,12 +27,92 @@
 	\textbf{Aufgabe 01}
 	\begin{compactenum} [(a)]
 		\item \begin{compactenum} [(i)]
-			\item $ \exists x \exists y \exists z (M(x) \wedge B(y) \wedge F(z)) $
+			\item $ \exists x \exists y \exists z (((M(x) \wedge B(y)) \wedge F(z))\wedge ((\lnot x=y \wedge \lnot x=z) \wedge \lnot y=z)) $
 			\item $ \exists x ((Nachfolger(x) = letzter \wedge H(x))\rightarrow H(Nachfolger(x))) $
-		\end{compactenum}
+		\end{compactenum} \
 		\item \begin{compactenum} [(i)]
-			\item Es gibt kein Tag x,  an dem nicht einer der drei Mannschaften 1. FSV Mainz 05, Hertha BSC oder Eintracht Frankfurt Tabellenführer ist = An jedem Spieltag ist einer der drei Mannschaften Tabellenführer.
+			\item Es gibt kein Tag $x$,  an dem nicht einer der drei Mannschaften 1. FSV Mainz 05, Hertha BSC oder Eintracht Frankfurt Tabellenführer ist = an jedem Spieltag ist einer der drei Mannschaften Tabellenführer.
 			\item Eintracht Frankfurt ist nie länger als zwei Tage in Folge Tabellenführer.
 		\end{compactenum}
+	\end{compactenum} \
+	
+	\textbf{Aufgabe 02}
+	\begin{compactenum} [(a)]
+		\item Die Aufgabe hab ich schon gemacht, muss sie aber noch einfügen! \textcolor{red}{TODO} \ \\
+		\item \begin{tabbing}
+			$ \varphi := $ \= $\exists x \exists y \exists z \forall v (((((((\lnot x = y \wedge \lnot x = z) \wedge \lnot y = z) \wedge E(y,x)) \wedge E(y,z)) \wedge E(z,x)) \wedge E(z,z)) $ \\
+			\> $\wedge ((v=x \vee v=y )\vee v=z))$
+		\end{tabbing}
+		Der $\mathsf{FO}[\sigma']$-Satz $ \varphi $ sagt aus, das es drei Knoten $x,y,z$ geben muss, die alle unterscheidlich sind und es keinen anderen Knoten $v$ mehr gibt, der nicht identisch zu $x,y$ oder $z$ ist. Zudem haben die Knoten $x,y,z$ genau die gleichen Kantenrelationen zueinander, wie die Knoten $a,b$ und $c$ aus der $ \sigma'$-Struktur $ \mathcal{A} $ \ \\
+		\item $ \varphi(x) := \forall y \exists z (x = y \vee (E(y,x) \rightarrow E(x,z))) $\\
+		$ \mathcal{A} := (A, E^\mathcal{A})$ mit $A:= \{a,b,c\}$ und $ E^\mathcal{A} := \{(a,b),(b,c)\} $
+		\begin{compactitem}
+			\item $ \mathcal{I}_1 :=(\mathcal{A},\beta_1) \qquad $ mit $ \beta_1(x) = b, \quad \beta_1(y) = a, \quad \beta_1(z) = c $\\
+			$\llbracket\varphi(x)\rrbracket^{\mathcal{I}_1} =(b=a \vee (E(a,b)\rightarrow E(b,c))) \Rightarrow a \neq b $ aber $ \{(a,b), (b,c)\} \in E^\mathcal{A}$
+			$\Rightarrow \mathcal{I}_1 \models \varphi $
+			\item $ \mathcal{I}_2 :=(\mathcal{A},\beta_2) \qquad $ mit $ \beta_2(x) = c, \quad \beta_2(y) = b, \quad \beta_2(z) = a $\\
+			$\llbracket\varphi(x)\rrbracket^{\mathcal{I}_2} =(c=b \vee (E(b,c)\rightarrow E(c,a))) \Rightarrow c \neq b $ und $ (b,c) \in E^\mathcal{A} $ aber $ (c,a) \not\in E^\mathcal{A} $\\
+			$ \Rightarrow \mathcal{I}_2 \not\models \varphi $
+		\end{compactitem}
+	\end{compactenum} \
+	
+	\textbf{Aufgabe 03}
+	\begin{compactenum} [(a)]
+		\item $ \mathcal{A}_w := (A, \leq^\mathcal{A}, P_A^\mathcal{A}, P_N^\mathcal{A}, P_S^\mathcal{A}) $ mit $ A:= \{1,2,3,4\} $\\
+		$ \mathcal{A}_w \models \varphi \Longleftrightarrow  w =$ NASA  \\
+		$ \varphi := (((P_N(1)\wedge P_A(2)) \wedge P_S(3)) \wedge P_a(4))$ \ \\
+		\item w = ANANAS \ \\
+		\item $ w \in L \Longleftrightarrow \mathcal{A}_w \models \psi $ \\
+		Der reguläre Ausdruck zu der Sprache $ L $ ist: $ ($A$|$N$|$AS$)^*$ \ \\
+		\item $ \alpha = $ (NSA$^*)^*$, $ \quad w \in L(\alpha)  \Longleftrightarrow \mathcal{B}_w \models \varphi$\\
+		$ \mathcal{B}_w := (B, \leq^\mathcal{B}, P_A^\mathcal{B}, P_N^\mathcal{B}, P_S^\mathcal{B}) $ mit $ B:=|w| $ \\
+		\begin{tabbing}
+			$ \varphi := $ \=$ ((\forall v_0 (P_S(v_0)\rightarrow \exists v_1((P_N(v_1)\wedge v_1 \leq v_0) \wedge \forall v_2(v_2 \leq v_1 \vee v_0 \leq v_2 ))) $\\
+			\> $ \wedge \forall v_3 (P_N(v_3)\rightarrow \exists v_4((P_S(v_4)\wedge v_3 \leq v_4) \wedge \forall v_5(v_5 \leq v_3 \vee v_4 \leq v_5 )))) $\\ 
+			\> $ \wedge \forall v_6(P_N(v_6)\rightarrow \exists v_7\forall v_8(P_N(v_7)\wedge v_7 \leq v_8))) $
+		\end{tabbing} \
+		
+		Die erste Zeile des $\mathsf{FO}[\sigma]$-Satzes $ \varphi $ sagt aus, dass wenn es ein $S$ an einer beliebigen Position $ v_0 $ gibt, es auch ein $N$ direkt links daneben geben muss. Die Zweite Zeile besagt, dass wenn es ein $N$ an einer beliebigen Position $ v_3 $ gibt, es auch ein S direkt rechts daneben geben muss. Die dritte Zeile besagt, dass wenn es ein $N$ an einer beliebigen Stelle $ v_6 $ gibt, dann muss der erste Buchstabe des Wortes ein $N$ sein. 
+		
 	\end{compactenum}
+	\newpage
+	\textbf{Aufgabe 04}
+		\begin{verbatim}
+		:- ensure_loaded([al])
+		
+		complexterm(X) :-
+		nonvar(X).
+		x=..[_, _| _].
+		
+		sym(N, A) :-
+		atom_codes(N, S).
+		atom_codes(x, S2),
+		append(S2, S, S3),
+		atom_codes(A, S3).
+		
+		%Aufgabe 4b
+		as_in_al(F, F) :- as(F).
+		as_in_al(- F, X) :- as_in_al(F, X).
+		as_in_al(F1 /\ _, X) :- as_in_al(F1, X).
+		as_in_al(_ /\ F2, X) :- as_in_al(F2, X).
+		as_in_al(F1 \/ _, X) :- as_in_al(F1, X).
+		as_in_al(_ \/ F2, X) :- as_in_al(F2, X).
+		as_in_al(F1 => _, X) :- as_in_al(F1, X).
+		as_in_al(_ => F2, X) :- as_in_al(F2, X).
+		
+		%Aufgabe 4c
+		al2nnf(X, X, - X).
+		al2nnf(- F, N, P) :- al2nnf(F, P, N).
+		al2nnf(F /\ G, PF /\ PG, NF \/ NG) :-
+		al2nnf(F, PF, Ng),
+		al2nnf(G, PG, NG).
+		% disjunktion
+		al2nnf(F \/ G, PF \/ PG, NF \/ NG) :-
+		al2nnf(F, PF, NG),
+		al2nnf(G, PG, NG).
+		% negationsnormalform
+		al2nnf(F => G, NF \/ PG, PF /\ NG) :-
+		al2nnf(FF, PF, NF),
+		al2nnf(FF, PG, NG).
+		\end{verbatim}
 \end{document}
