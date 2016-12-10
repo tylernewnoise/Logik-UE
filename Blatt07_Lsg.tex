@@ -78,21 +78,12 @@
 	\newpage
 	\textbf{Aufgabe 04}
 		\begin{verbatim}
-		:- ensure_loaded([al])
+		% Aufgabe a
+		:- ensure_loaded([al]).
 		
-		complexterm(X) :-
-		nonvar(X).
-		x=..[_, _| _].
-		
-		sym(N, A) :-
-		atom_codes(N, S).
-		atom_codes(x, S2),
-		append(S2, S, S3),
-		atom_codes(A, S3).
-		
-		%Aufgabe 4b
+		% Aufgabe b
 		as_in_al(F, F) :- as(F).
-		as_in_al(- F, X) :- as_in_al(F, X).
+		as_in_al(~ F, X) :- as_in_al(F, X).
 		as_in_al(F1 /\ _, X) :- as_in_al(F1, X).
 		as_in_al(_ /\ F2, X) :- as_in_al(F2, X).
 		as_in_al(F1 \/ _, X) :- as_in_al(F1, X).
@@ -100,15 +91,15 @@
 		as_in_al(F1 => _, X) :- as_in_al(F1, X).
 		as_in_al(_ => F2, X) :- as_in_al(F2, X).
 		
-		%Aufgabe 4c
-		al2nnf(X, X, - X).
-		al2nnf(- F, N, P) :- al2nnf(F, P, N).
+		% Aufgabe c
+		al2nnf(X, X, ~ X).
+		al2nnf(~ F, N, P) :- al2nnf(F, P, N).
 		al2nnf(F /\ G, PF /\ PG, NF \/ NG) :-
-		al2nnf(F, PF, Ng),
+		al2nnf(F, PF, NF),
 		al2nnf(G, PG, NG).
 		% disjunktion
-		al2nnf(F \/ G, PF \/ PG, NF \/ NG) :-
-		al2nnf(F, PF, NG),
+		al2nnf(F \/ G, PF \/ PG, NF /\ NG) :-
+		al2nnf(F, PF, NF),
 		al2nnf(G, PG, NG).
 		% negationsnormalform
 		al2nnf(F => G, NF \/ PG, PF /\ NG) :-
