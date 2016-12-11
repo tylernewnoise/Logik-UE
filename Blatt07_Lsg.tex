@@ -86,7 +86,7 @@
 		
 		% Aufgabe b
 		as_in_al(F, F) :- as(F).
-		as_in_al(~ F, X) :- as_in_al(F, X).
+		as_in_al(~F, X) :- as_in_al(F, X).
 		as_in_al(F1 /\ _, X) :- as_in_al(F1, X).
 		as_in_al(_ /\ F2, X) :- as_in_al(F2, X).
 		as_in_al(F1 \/ _, X) :- as_in_al(F1, X).
@@ -95,18 +95,20 @@
 		as_in_al(_ => F2, X) :- as_in_al(F2, X).
 		
 		% Aufgabe c
-		al2nnf(X, X, ~ X).
-		al2nnf(~ F, N, P) :- al2nnf(F, P, N).
+		al2nnf(X, X, ~X) :-
+			as(X).
+		al2nnf(~ F, P, N) :- 
+			al2nnf(F, N, P).
 		al2nnf(F /\ G, PF /\ PG, NF \/ NG) :-
-		al2nnf(F, PF, NF),
-		al2nnf(G, PG, NG).
+			al2nnf(F, PF, NF),
+			al2nnf(G, PG, NG).
 		% disjunktion
 		al2nnf(F \/ G, PF \/ PG, NF /\ NG) :-
-		al2nnf(F, PF, NF),
-		al2nnf(G, PG, NG).
+			al2nnf(F, PF, NF),
+			al2nnf(G, PG, NG).
 		% negationsnormalform
 		al2nnf(F => G, NF \/ PG, PF /\ NG) :-
-		al2nnf(FF, PF, NF),
-		al2nnf(FF, PG, NG).
+			al2nnf(F, PF, NF),
+			al2nnf(G, PG, NG).
 		\end{verbatim}
 \end{document}
