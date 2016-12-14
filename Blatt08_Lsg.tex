@@ -10,7 +10,7 @@
 \usepackage[margin=2.0cm,headheight=40pt,top=3cm]{geometry}
 \usepackage{tikz}
 \usepackage{cancel}
-\usepackage{mathabx} 
+\usepackage{mathabx}
 \usepackage{stmaryrd}
 \usepackage{colortbl}
 \usetikzlibrary{matrix,positioning,arrows, automata}
@@ -27,92 +27,92 @@
 	\textbf{Aufgabe 01}
 	\begin{compactenum} [(a)]
 		\item \begin{compactenum} [(i)]
-			\item 
-			\item 
+			\item
+			\item
 		\end{compactenum} \
 		\item \begin{compactenum} [(i)]
-		\item 
-		\item 
+		\item
+		\item
 		\end{compactenum} \
 	\end{compactenum} \
-	
+
 	\textbf{Aufgabe 02}
 	\begin{compactenum} [(a)]
 		\item \begin{compactenum} [(i)]
-			\item 
-			\item 
-			\item 
+			\item
+			\item
+			\item
 		\end{compactenum} \
 		\item \begin{compactenum} [(i)]
-			\item 
-			\item 
-			\item 
-			\item 
-		\end{compactenum} 
+			\item
+			\item
+			\item
+			\item
+		\end{compactenum}
 	\end{compactenum} \
-	
+
 	\textbf{Aufgabe 03}
 	\begin{compactenum} [(a)]
-		\item 
-		\item 
+		\item
+		\item
 	\end{compactenum} \
 
 	\textbf{Aufgabe 04}
 	\begin{compactenum} [a)]
-		\item 
+		\item
 		\item \begin{verbatim}
 		% (b)
 		% voraussetzung
 		:- ensure_loaded([al]).
-		
+
 		% wenn die liste L leer ist
 		not_member(_, []).
-		
+
 		% wenn X das erste element der liste L ist
-		not_member(X, [X|_]) :- 
+		not_member(X, [X|_]) :-
 			!, fail.
-		
+
 		% ka
 		not_member(X, [_|T]) :- not_member(X, T).
-		
+
 		% (c)
 		:- op(300, xfx, <=>). %biimplikation
-		
+
 		% (d)
-		
+
 		% memes
-		maybe_sym(F, F) 
+		maybe_sym(F, F)
 			:- al_lit(F), !.
-		maybe_sym(F, X) 
-			:- gemsym(x, X).
-		
+		maybe_sym(F, X)
+			:- gensym(x, X).
+
 		% dank
 		%tseitin(X, S, K) :-
-		
+
 		tseitin(F, [S | T]) :-
 			maybe_sym(F, S),
 			tseitin(F, S, T).
-		
-		tseitin(L, _, []) :- 
+
+		tseitin(L, _, []) :-
 			al_lit(L), !.
 		tseitin(~ F, S, [ S <=> ~ FS | T ] ) :-
 			maybe_sym(F, FS),
 			tseitin(F, FS, T).
-		
+
 		tseitin(F /\ G, S, [ S <=> (FS /\ GS) | T ] ) :-
 			maybe_sym(F, FS),
 			maybe_sym(G, GS),
 			tseitin(F, FS, FT),
 			tseitin(G, GS, GT),
 			append(FT, GT, T).
-		
+
 		tseitin(F \/ G, S, [ S <=> (FS \/ GS) | T ] ) :-
 			maybe_sym(F, FS),
 			maybe_sym(G, GS),
 			tseitin(F, FS, FT),
 			tseitin(G, GS, GT),
 			append(FT, GT, T).
-		
+
 		tseitin(F => G, S, [ S <=> (FS => GS) | T ] ) :-
 			maybe_sym(F, FS),
 			maybe_sym(G, GS),
