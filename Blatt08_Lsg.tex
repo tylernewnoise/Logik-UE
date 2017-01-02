@@ -27,27 +27,33 @@
 	\textbf{Aufgabe 01}
 	\begin{compactenum} [(a)]
 		\item \begin{compactenum} [(i)]
-			\item
-			\item
+			\item $ \varphi(x_{Tel}) = \exists x_K \exists x_A \exists x_{St} (R_{Kino}(x_K, x_A, x_{St}, x_{Tel})\ \wedge \ \exists x_T (R_{Prog}(x_K, x_T, \text{'20:15'})\ \vee \ R_{Prog}(x_K, x_T, \text{'20:30'})))$
+			\item $ \varphi(x_R) = \exists x_T \exists x_S ((R_{Film}(x_T, x_R, x_S) \wedge x_R = x_S) \wedge \lnot \forall x_K \forall x_Z R_{Prog}(x_K, x_T, x_Z))$
 		\end{compactenum} \
 		\item \begin{compactenum} [(i)]
-		\item
-		\item
+		\item $ \varphi_1(x_T)  $ gibt alle Filmtitel aus, die im Kino Babylon und nicht im Kino Casablanca laufen. 
+		\item $ \varphi_2(x_K,x_Z)  $ gibt alle Kombinationen von Kinos und Uhrzeiten aus, an denen ein Film läuft, in dem George Clooney weder Regisseur noch Schauspieler ist.
 		\end{compactenum} \
 	\end{compactenum} \
 
 	\textbf{Aufgabe 02}
 	\begin{compactenum} [(a)]
 		\item \begin{compactenum} [(i)]
-			\item
-			\item
-			\item
+			\item wahr
+			\item wahr
+			\item falsch
 		\end{compactenum} \
 		\item \begin{compactenum} [(i)]
-			\item
-			\item
-			\item
-			\item
+			\item wahr
+			\item wahr
+			\item falsch
+			\item wahr
+		\end{compactenum}
+		\item \begin{compactenum} [(i)]
+			\item 
+			\item % Gegenbeispiel: Sei $ \sigma := \{R/1, S/1\} $, wir bretrachten die $ \sigma$-Struktur $ \mathcal{A} := (A, R^\mathcal{A}, S^\mathcal{A}) $ mit $ A:= \{1,2\} $ und $ R^\mathcal{A} = \{1\}; \quad S^\mathcal{A} = \{2\}$. \\
+			% Sein nun $ \varphi := R(x) $; $ \psi := S(x) $ \\
+			% $ (\exists x R(x) \wedge \exists x S(x)) $
 		\end{compactenum}
 	\end{compactenum} \
 
