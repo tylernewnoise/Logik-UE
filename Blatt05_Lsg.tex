@@ -212,7 +212,14 @@
 		\end{compactenum}\
 		\item 
 		\begin{verbatim}
-		
+		psum([],A,A).
+		psum([H|T],A,N) :-
+		AT is  A+H,
+		psum(T,A,N).
+		psum([_|T],AT,N) :-
+		psum(T,AT,N).
+		psum(L, N) :-
+		psum(L,0,N).
 		\end{verbatim}
 	\end{compactenum}
 
