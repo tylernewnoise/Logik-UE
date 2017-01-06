@@ -28,7 +28,7 @@
 	\begin{compactenum} [(a)]
 		\item \begin{compactenum} [(i)]
 			\item $ \exists x \exists y \exists z (((M(x) \wedge B(y)) \wedge F(z))\wedge ((\lnot x=y \wedge \lnot x=z) \wedge \lnot y=z)) $
-			\item $ \exists x ((Nachfolger(x) = letzter \wedge H(x))\rightarrow H(Nachfolger(x))) $
+			\item $ \exists x (((Nachfolger(x) = letzter \wedge H(x))\wedge \lnot x = letzter)\rightarrow H(Nachfolger(x))) $
 		\end{compactenum} \
 		\item \begin{compactenum} [(i)]
 			\item Es gibt kein Tag $x$,  an dem nicht einer der drei Mannschaften 1. FSV Mainz 05, Hertha BSC oder Eintracht Frankfurt Tabellenführer ist = an jedem Spieltag ist einer der drei Mannschaften Tabellenführer.
@@ -39,8 +39,8 @@
 	\textbf{Aufgabe 02}
 	\begin{compactenum} [(a)]
 		\item \begin{compactenum} [(i)]
-			\item frei($\varphi$) = $ \emptyset \qquad \quad \Longrightarrow \varphi $ ist ein FO$[\sigma]-Satz $
-			\item frei($\varphi$) = $ \{x,z\} \quad \Longrightarrow \varphi $ ist kein FO$[\sigma]-Satz $
+			\item frei($\varphi$) = $ \emptyset$; gebunden($\varphi$) = \{x,y,z\}$ \qquad \quad \Longrightarrow \varphi $ ist ein FO$[\sigma]-Satz $
+			\item frei($\varphi$) = $ \{x,z\},$ gebunden($\varphi) = \{y,z\} \quad \Longrightarrow \varphi $ ist kein FO$[\sigma]-Satz $
 		\end{compactenum} 
 		\item \begin{tabbing}
 			$ \varphi := $ \= $\exists x \exists y \exists z \forall v (((((((\lnot x = y \wedge \lnot x = z) \wedge \lnot y = z) \wedge E(y,x)) \wedge E(y,z)) \wedge E(z,x)) \wedge E(z,z)) $ \\
@@ -63,7 +63,7 @@
 	\begin{compactenum} [(a)]
 		\item $ \mathcal{A}_w := (A, \leq^\mathcal{A}, P_A^\mathcal{A}, P_N^\mathcal{A}, P_S^\mathcal{A}) $ mit $ A:= \{1,2,3,4\} $\\
 		$ \mathcal{A}_w \models \varphi \Longleftrightarrow  w =$ NASA  \\
-		$ \varphi := (((P_N(1)\wedge P_A(2)) \wedge P_S(3)) \wedge P_a(4))$ \ \\
+		$ P_A^{\mathcal{A}_w} = \{2,4\};\quad P_N^{\mathcal{A}_w} = \{1\};\quad P_S^{\mathcal{A}_w} = \{3\} $ \\
 		\item w = ANANAS \ \\
 		\item $ w \in L \Longleftrightarrow \mathcal{A}_w \models \psi $ \\
 		Der reguläre Ausdruck zu der Sprache $ L $ ist: $ ($A$|$N$|$AS$)^*$ \ \\
