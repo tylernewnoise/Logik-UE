@@ -18,24 +18,17 @@
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\lhead{Jonas Panizza (567687)\\
-	Fabian Bucher (577513)\\
-	Falko Becker (559053)\\
-	Blatt 09} %BLATT-NR BEI BEDARF ÄNDERN!
-\rhead{ÜG Di 13-15 Jens Keppeler\\
-	ÜG Di 13-15 Jens Keppeler \\
-	ÜG Di 13-15 Jens Keppeler \\
-	Rückgabe ÜG Di 13-15 Jens Keppeler}
+\lhead{Blatt 09}
+\rhead{}
 \cfoot{}
 \rfoot{\thepage}
 \begin{document}
 	\parindent0pt
 	\textbf{Aufgabe 01}
 	\begin{compactenum} [(a)]
-		\item $ \varphi := \exists x\exists y \forall z (E(x,z) \vee E(y,z))$\\
-		Dann gilt: $ \mathcal{A} \models \varphi $ und $ \mathcal{B} \not\models \varphi$ dh. $ \mathcal{B} \models \lnot \varphi $\\
-		$ \Longrightarrow \lnot \varphi \equiv \forall x \forall y \exists z (\lnot E(x,z) \wedge \lnot E(y,z)) $\\
-		Also gilt:
+		\item $ \varphi := \exists x\exists y \forall z (E(x,z) \vee E(y,z))$\\\\
+		Dann gilt: \[ \mathcal{A} \models \varphi \text{und } \mathcal{B} \not\models \varphi \text{d.h.} \mathcal{B} \models \lnot \varphi \Longrightarrow \lnot \varphi \equiv \forall x \forall y \exists z (\lnot E(x,z) \wedge \lnot E(y,z)) \]
+		Also gilt:\\
 		\begin{tabbing}
 			$ \mathcal{A} \models \exists x\exists y \forall z (E(x,z) \vee E(y,z))$ \qquad \qquad \qquad \= (R1) \\
 			$ \mathcal{B} \models \forall x \forall y \exists z (\lnot E(x,z) \wedge \lnot E(y,z)) $
@@ -46,13 +39,13 @@
 		\begin{tabbing}
 			\underline{Runde 1}: \= Spoiler wählt ein $ a_1 \in A $ so das gilt:\\
 			\> $ \mathcal{A} \models \big( \exists y \forall z (E(x,z) \vee E(y,z)) \big) [a_1] $\\
-			\> Dieses $ a_1 $ ist gerade einer der beiden Knoten, der vier Nachbarknoten hat\\
+			\> Dieses $ a_1 $ ist gerade einer der beiden Knoten, der vier Nachbarknoten hat.\\
 			\> Duplicator wählt nun einen beliebigen Knoten $ b_1 \in B$ so dass gilt:\\
 			\> $ \mathcal{B} \models \big(\forall y \exists z (\lnot E(x,z) \wedge \lnot E(y,z))\big) [b_1] $\\\\
 
 			\underline{Runde 2}: Spoiler wählt ein $ a_2 \in A$ so das gilt:\\
 			\> $\mathcal{A} \models \big(\forall z (E(x,z) \vee E(y,z))\big) [a_1][a_2]$\\
-			\> Dieses $ a_2 $ ist der andere Knoten in A, der vier Nachbarknoten hat\\
+			\> Dieses $ a_2 $ ist der andere Knoten in A, der vier Nachbarknoten hat.\\
 			\> Duplicator wählt nun einen beliebigen Knoten $ b_2 \in B $, der allerdings mit $ b_1 $ verbunden sein muss.\\
 			\> Also gilt:\\
 			\> $ \mathcal{B} \models \big(\exists z (\lnot E(x,z) \wedge \lnot E(y,z))\big) [b_1][b_2] $\\\\
@@ -65,21 +58,21 @@
 			\> $\mathcal{A} \models \big(E(x,z) \vee E(y,z)\big) [a_1][a_2][a_3]$\\
 		\end{tabbing}\
 		Am Ende der Partie wissen wir gemäß (R1) und (R2), dass folgendes gilt:\\
-		$ \big(\{(a_1,a_2),(a_2,a_3)\}\in E^\mathcal{A}\big) $ oder $ \big(\{(a_1,a_2),(a_1,a_3)\}\in E^\mathcal{A}\big) $ und\\
-		$ \big((b_1,b_2)\in E^\mathcal{B}$ und $\{(b_1,b_3),(b_2,b_3)\} \not\in E^\mathcal{B}\big) $ oder $ \big((b_1,b_2)\not\in E^\mathcal{B}$ und $\{(b_1,b_3),(b_2,b_3)\} \not\in E^\mathcal{B}\big) $\\
+		\[ \big(\{(a_1,a_2),(a_2,a_3)\}\in E^\mathcal{A}\big)  \text{oder } \big(\{(a_1,a_2),(a_1,a_3)\}\in E^\mathcal{A}\big) \] 
+		und\\
+		\[ \big((b_1,b_2)\in E^\mathcal{B} \text{ und } \{(b_1,b_3),(b_2,b_3)\} \not\in E^\mathcal{B}\big) \text{ oder }  \big((b_1,b_2)\not\in E^\mathcal{B} \text{ und } \{(b_1,b_3),(b_2,b_3)\} \not\in E^\mathcal{B}\big) \]\\
 		
-		In allen Fällen hat der Duplicator verloren. Somit hat Spoiler eine Gewinnstrategie in 3-Runden EF-Spiel auf $\mathcal{A}$ und $\mathcal{B}$\\
+		In allen Fällen hat Duplicator verloren. Somit hat Spoiler eine Gewinnstrategie in 3-Runden EF-Spiel auf $\mathcal{A}$ und $\mathcal{B}$\\
 		
 		\item Es existiert keine bessere Gewinnstrategie, da in m = 2 sich folgendes Szenario abspielen würde:\\
 		In der ersten Runde wählen Spoiler und Duplicator beliebige Knoten aus A und B. Nun hat Spoiler in der zweiten Runde die Wahl, ob er einen benachbarten Knoten zu einem schon existieren wählt oder nicht. Ganz egal wie er sich entscheidet, könnte Duplicator ihm gleichziehen, da es in der Struktur $ \mathcal{A} $ und $ \mathcal{B} $ zu jedem Knoten einen Nachbarknoten gibt als auch einen nicht benachbarten. 
-	\end{compactenum}
-	\newpage
+	\end{compactenum}\ \\
 	
 	\textbf{Aufgabe 02}\\
-	Scheiß Induktionsbeweis, kannste knicken! Falko?? :D
+	Scheiß Induktionsbeweis, kannste knicken! Falko?? :D - Lass mich in Ruh! Fabi? :D
 	
 	\newpage
-	
+
 	\textbf{Aufgabe 03}\\
 	
 	\begin{compactenum} [(a)]
@@ -109,8 +102,74 @@
 		\item $ \varphi = \exists x \forall y (E(y,x)\vee x=y)$\\
 		$ \varphi $ erfüllt $ \mathcal{A} $, da es einen Knoten x gibt, der von allen anderen Knoten y eine eingehende Kante hat. Dies ist genau der unterste Knoten im Graphen. Zu sich selber hat er keine Kante, deswegen gilt die zweite Bedingung 'x=y'. $ \varphi $ erfüllt nicht $ \mathcal{B} $, da es keinen Knoten x in $ \mathcal{B} $ gibt, der von allen anderen Knoten bis auf sich selber eine eingehende Kante hat.\\
 		Also gilt: $ \mathcal{A} \models \varphi $ und $ \mathcal{B} \not\models \varphi$
-		
 	\end{compactenum}
+	\newpage
+
+	\textbf{Aufgabe 04}\\
+
+	\begin{verbatim}
+		:- ensure_loaded([kinodb, al]).
+		
+		% (a)
+		george(L) :-
+		bagof((K, Z), F^R^(programm(K, F, Z), film(F, R, 'George Clooney')), L).
+		
+		% (b)
+		:- dynamic belegt/3.
+		reservieren(P, Z, S) :-
+		programm('Babylon', _, Z),
+		\+ belegt(_, Z, S),
+		assert(belegt(P, Z, S)).
+		
+		% (c)
+		stornieren(Z, S) :-
+		retract(belegt(_, Z, S)).
+		
+		:- dynamic lookup/3.
+		
+		add_and_square(X, Y, Res) :-
+		lookup(X, Y, Res), !.
+		
+		add_and_square(X, Y, Res) :-
+		Res is (X+Y) * (X+Y),
+		assert(lookup(X, Y, Res)).
+		
+		:- dynamic lookup_fak/2.
+		
+		fak(0, 1).
+		fak(N, X) :-
+		lookup_fak(N, X), !.
+		fak(N, X) :-
+		N > 0,
+		N2 is N -1,
+		fak(N2, X2);
+		X is N * X2.
+		assert(lookup_fak(N, X)).
+		
+		% (d)
+		negate_lit(L, -L) :- as(L).
+		negate_lit(-L, L) :- as(L).
+		
+		%unit(Klauselmenge, Literal, Klauselmenge2)
+		unit([], _, []).
+		unit([K|T], L, T2) :-
+		member(L, K), !,
+		unit(T, L, T2).
+		unit([K|T], L, [K2|T2]) :-
+		negate_lit(L, LN),
+		select(LN, K, K2), !,
+		unit(T, L, T2).
+		unit([K|T], L, [K|T2]) :-
+		unit(T, L, T2).
+		
+		unit_propagation(K, K2) :-
+		member([L], K), !,
+		unit(K, L, Kd),
+		unit_propagation(Kd, K2).
+		unit_propagation(K, K).
+
+	\end{verbatim}
+
 	
 	
 \end{document}
