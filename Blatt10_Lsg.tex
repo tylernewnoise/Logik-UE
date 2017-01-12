@@ -1,0 +1,97 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[ngerman]{babel}		%dt. Übersetzung und Umlaute
+\usepackage[utf8]{inputenc}		%Umlaute direkt eingeben
+\usepackage{mathtools}			%Mathekrams
+\usepackage{paralist}			%bessere Listen
+\usepackage{amssymb}			%Mathesymbole
+\usepackage{amsthm}			%typesetting theorems (Text über = u.ä.)
+\usepackage{fancyhdr} 			%Headerstyles
+\usepackage{verbatim}			%Sourcecode einfügen
+\usepackage[margin=2.0cm,headheight=40pt,top=3cm]{geometry}
+\usepackage{tikz}
+\usepackage{cancel}
+\usepackage{stmaryrd}
+\usepackage{colortbl}
+\usetikzlibrary{matrix,positioning,arrows, automata}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{Jonas Panizza (567687)\\
+	Fabian Bucher (577513)\\
+	Falko Becker (559053)\\
+	Blatt 10} %BLATT-NR BEI BEDARF ÄNDERN!
+\rhead{ÜG Di 13-15 Jens Keppeler\\
+	ÜG Di 13-15 Jens Keppeler \\
+	ÜG Di 13-15 Jens Keppeler \\
+	Rückgabe ÜG Di 13-15 Jens Keppeler}
+\cfoot{}
+\rfoot{\thepage}
+\begin{document}
+	\parindent0pt
+	\textbf{Aufgabe 01}
+	\begin{compactenum} [(a)]
+		\item Es existiert eine Gewinnstrategie für Spoiler bei einem 4-Runden EF Spiel auf $ \mathcal{A} $ und $ \mathcal{B} $. Diese lässt sich leicht aus der Formel $ \psi $ aus Aufgabe (b) ablesen:\\
+		\begin{tabbing}
+			\underline{Runde 1:} \= Spoiler wählt ein $ b_1 \in B $ genau so, dass gilt:\\
+			\> $ \mathcal{B} \models \big(\exists y \exists z \forall v (((E(x,v)\vee E(v,x))\vee  (E(y,v)\vee E(v,y)))\vee (E(z,v)\vee E(v,z)))\big)[b_1] $ \\
+			\> $ b_1 $ ist genau der linke Knoten der Raute in $ \mathcal{B} $ \\
+			\> Duplicator wählt nun ein beliebigen Knoten $ a_1 \in A$, so dass gilt:\\
+			\> $ \mathcal{A} \models \big(\forall y \forall z \exists v (((\lnot E(x,v)\wedge \lnot E(v,x))\wedge  (\lnot E(y,v)\wedge \lnot E(v,y)))\wedge (\lnot E(z,v)\wedge \lnot E(v,z)))\big) [a_1] $ \\
+			
+			\underline{Runde 2:} \> Spoiler wählt ein $ b_2 \in B $ genau so, dass gilt:\\
+			\> $ \mathcal{B} \models \big(\exists z \forall v (((E(x,v)\vee E(v,x))\vee  (E(y,v)\vee E(v,y)))\vee (E(z,v)\vee E(v,z)))\big)[b_1][b_2] $ \\
+			\> $ b_2 $ ist genau der recht Knoten der Rauten in $ \mathcal{B} $\\
+			\> Duplicator wählt erneut einen beliebigen Knoten $ a_2 \in A$ so dass gilt:\\
+			\> $ \mathcal{A} \models \big(\forall z \exists v (((\lnot E(x,v)\wedge \lnot E(v,x))\wedge  (\lnot E(y,v)\wedge \lnot E(v,y)))\wedge (\lnot E(z,v)\wedge \lnot E(v,z)))\big) [a_1][a_2] $ \\
+			\underline{Runde 3:} \> Spoiler wählt ein $ b_3 \in B $ genau so, dass gilt:\\
+			\> $ \mathcal{B} \models \big(\forall v (((E(x,v)\vee E(v,x))\vee  (E(y,v)\vee E(v,y)))\vee (E(z,v)\vee E(v,z)))\big)[b_1][b_2][b_3] $ \\
+			\> $ b_3 $ ist genau der oberste linke Knoten in $ \mathcal{B} $\\
+			\> Duplicator wählt wieder einen beliebigen Knoten $ a_3 \in A$ so dass gilt:\\
+			\> $ \mathcal{A} \models \big(\exists v (((\lnot E(x,v)\wedge \lnot E(v,x))\wedge  (\lnot E(y,v)\wedge \lnot E(v,y)))\wedge (\lnot E(z,v)\wedge \lnot E(v,z)))\big) [a_1][a_2][a_3] $ \\
+			\underline{Runde 4:} \> Spoiler wählt einen Knoten $ a_4 \in A$ genau so, dass gilt:\\
+			\> $ \mathcal{A} \models \big(((\lnot E(x,v)\wedge \lnot E(v,x))\wedge  (\lnot E(y,v)\wedge \lnot E(v,y)))\wedge (\lnot E(z,v)\wedge \lnot E(v,z))\big) [a_1][a_2][a_3][a_4] $ \\
+			\> Der Knoten $ a_4 $ darf also weder $ a_1, a_2 $ noch $ a_3 $ als Nachbarn haben.\\
+			\> Duplicator wählt nun einen beliebigen Knoten $ b_4 \in B $, so dass gilt:\\
+			\> $ \mathcal{B} \models \big(((E(x,v)\vee E(v,x))\vee  (E(y,v)\vee E(v,y)))\vee (E(z,v)\vee E(v,z))\big)[b_1][b_2][b_3][b_4] $ \\
+			\> $ b_4 $ ist nun gezwungener maßen entweder mit $ b_1, b_2 $ oder $ b_3 $ benachbart und verletzt somit die Formel $ \psi $\\
+		\end{tabbing}
+		
+		Gewinnstrategie für Spoiler für m = 3:\\
+		\\
+		TODO
+		\\
+		
+		
+		\item $ \psi := \forall x \forall y \forall z \exists v (((\lnot E(x,v)\wedge \lnot E(v,x))\wedge  (\lnot E(y,v)\wedge \lnot E(v,y)))\wedge (\lnot E(z,v)\wedge \lnot E(v,z))) $\\
+		$ \lnot \psi := \exists x \exists y \exists z \forall v (((E(x,v)\vee E(v,x))\vee  (E(y,v)\vee E(v,y)))\vee (E(z,v)\vee E(v,z))) $ \\
+		$ \mathcal{A} \models \psi $ und $ \mathcal{B} \not\models \psi$
+	\end{compactenum}
+	\newpage
+	
+	\textbf{Aufgabe 02}\\
+	Wiedermal scheiß Beweise...
+	
+	\newpage
+	\textbf{Aufgabe 03}\\
+	\begin{compactenum} [(a)]
+		\item \begin{compactenum} [(i)]
+			\item TODO
+			\item TODO
+		\end{compactenum}
+		\item $ \varphi(x,z) := \exists y \Big(E(z,y)\rightarrow \big(\forall y E(x,y) \wedge \lnot \exists x E(x,y)\big)\Big) $ \\
+		\begin{compactenum} [(i)]
+			\item Siehe Aufgabenteil (b)
+			\\
+			\item \begin{tabbing}
+				$ \varphi(x,z) $\= $ \equiv \exists y \Big(\lnot E(z,y)\vee \big(\forall y E(x,y) \wedge \lnot \exists x E(x,y)\big)\Big) \qquad \qquad$ \= Elimination von "$ \rightarrow $"\\
+				\> $ \equiv \exists y \Big(\lnot E(z,y)\vee \big(\forall y E(x,y) \wedge \forall x \lnot E(x,y)\big)\Big)$ \> $ \lnot \exists x \psi \equiv \forall x \lnot \psi $\\
+				\> $ \equiv \exists y \Big(\lnot E(z,y)\vee \big(\forall z_1 E(x,z_1) \wedge \forall z_2 \lnot E(z_2,y)\big)\Big)$ \> Umbenennung von gebundenen Variablen\\
+				\> $ \equiv \exists y \Big(\lnot E(z,y)\vee \forall z_1 \forall z_2 \big( E(x,z_1) \wedge \lnot E(z_2,y)\big)\Big)$ \> Zusammenlegung der Konjunktion\\
+				\> $ \equiv \exists y \forall z_1 \forall z_2 \Big(\lnot E(z,y)\vee \big( E(x,z_1) \wedge \lnot E(z_2,y)\big)\Big)$ \> Zusammenlegung der Disjunktion\\
+			\end{tabbing}
+			Diese Formel ist in PNF und NNF
+		\end{compactenum}
+		\item TODO
+	\end{compactenum}
+\end{document}
