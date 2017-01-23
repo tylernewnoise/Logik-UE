@@ -40,20 +40,20 @@
 			\> $ \mathcal{A} \models \big(\forall y \forall z \exists v (((\lnot E(x,v)\wedge \lnot E(v,x))\wedge  (\lnot E(y,v)\wedge \lnot E(v,y)))\wedge (\lnot E(z,v)\wedge \lnot E(v,z)))\big) [a_1] $ \\
 			
 			\underline{Runde 2:} \> Spoiler wählt ein $ b_2 \in B $ genau so, dass gilt:\\
-			\> $ \mathcal{B} \models \big(\exists z \forall v (((E(x,v)\vee E(v,x))\vee  (E(y,v)\vee E(v,y)))\vee (E(z,v)\vee E(v,z)))\big)[b_1][b_2] $ \\
+			\> $ \mathcal{B} \models \big(\exists z \forall v (((E(x,v)\vee E(v,x))\vee  (E(y,v)\vee E(v,y)))\vee (E(z,v)\vee E(v,z)))\big)[b_1,b_2] $ \\
 			\> $ b_2 $ ist genau der recht Knoten der Rauten in $ \mathcal{B} $\\
 			\> Duplicator wählt erneut einen beliebigen Knoten $ a_2 \in A$ so dass gilt:\\
-			\> $ \mathcal{A} \models \big(\forall z \exists v (((\lnot E(x,v)\wedge \lnot E(v,x))\wedge  (\lnot E(y,v)\wedge \lnot E(v,y)))\wedge (\lnot E(z,v)\wedge \lnot E(v,z)))\big) [a_1][a_2] $ \\
+			\> $ \mathcal{A} \models \big(\forall z \exists v (((\lnot E(x,v)\wedge \lnot E(v,x))\wedge  (\lnot E(y,v)\wedge \lnot E(v,y)))\wedge (\lnot E(z,v)\wedge \lnot E(v,z)))\big) [a_1,a_2] $ \\
 			\underline{Runde 3:} \> Spoiler wählt ein $ b_3 \in B $ genau so, dass gilt:\\
-			\> $ \mathcal{B} \models \big(\forall v (((E(x,v)\vee E(v,x))\vee  (E(y,v)\vee E(v,y)))\vee (E(z,v)\vee E(v,z)))\big)[b_1][b_2][b_3] $ \\
+			\> $ \mathcal{B} \models \big(\forall v (((E(x,v)\vee E(v,x))\vee  (E(y,v)\vee E(v,y)))\vee (E(z,v)\vee E(v,z)))\big)[b_1,b_2,b_3] $ \\
 			\> $ b_3 $ ist genau der oberste linke Knoten in $ \mathcal{B} $\\
 			\> Duplicator wählt wieder einen beliebigen Knoten $ a_3 \in A$ so dass gilt:\\
-			\> $ \mathcal{A} \models \big(\exists v (((\lnot E(x,v)\wedge \lnot E(v,x))\wedge  (\lnot E(y,v)\wedge \lnot E(v,y)))\wedge (\lnot E(z,v)\wedge \lnot E(v,z)))\big) [a_1][a_2][a_3] $ \\
+			\> $ \mathcal{A} \models \big(\exists v (((\lnot E(x,v)\wedge \lnot E(v,x))\wedge  (\lnot E(y,v)\wedge \lnot E(v,y)))\wedge (\lnot E(z,v)\wedge \lnot E(v,z)))\big) [a_1,a_2,a_3] $ \\
 			\underline{Runde 4:} \> Spoiler wählt einen Knoten $ a_4 \in A$ genau so, dass gilt:\\
-			\> $ \mathcal{A} \models \big(((\lnot E(x,v)\wedge \lnot E(v,x))\wedge  (\lnot E(y,v)\wedge \lnot E(v,y)))\wedge (\lnot E(z,v)\wedge \lnot E(v,z))\big) [a_1][a_2][a_3][a_4] $ \\
+			\> $ \mathcal{A} \models \big(((\lnot E(x,v)\wedge \lnot E(v,x))\wedge  (\lnot E(y,v)\wedge \lnot E(v,y)))\wedge (\lnot E(z,v)\wedge \lnot E(v,z))\big) [a_1,a_2,a_3,a_4] $ \\
 			\> Der Knoten $ a_4 $ darf also weder $ a_1, a_2 $ noch $ a_3 $ als Nachbarn haben.\\
 			\> Duplicator wählt nun einen beliebigen Knoten $ b_4 \in B $, so dass gilt:\\
-			\> $ \mathcal{B} \models \big(((E(x,v)\vee E(v,x))\vee  (E(y,v)\vee E(v,y)))\vee (E(z,v)\vee E(v,z))\big)[b_1][b_2][b_3][b_4] $ \\
+			\> $ \mathcal{B} \models \big(((E(x,v)\vee E(v,x))\vee  (E(y,v)\vee E(v,y)))\vee (E(z,v)\vee E(v,z))\big)[b_1,b_2,b_3,b_4] $ \\
 			\> $ b_4 $ ist nun gezwungener maßen entweder mit $ b_1, b_2 $ oder $ b_3 $ benachbart und verletzt somit die Formel $ \psi $\\
 		\end{tabbing}
 		
