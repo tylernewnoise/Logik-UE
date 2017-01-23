@@ -1,0 +1,96 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[ngerman]{babel}		%dt. Übersetzung und Umlaute
+\usepackage[utf8]{inputenc}		%Umlaute direkt eingeben
+\usepackage{mathtools}			%Mathekrams
+\usepackage{paralist}			%bessere Listen
+\usepackage{amssymb}			%Mathesymbole
+\usepackage{amsthm}			%typesetting theorems (Text über = u.ä.)
+\usepackage{fancyhdr} 			%Headerstyles
+\usepackage{verbatim}			%Sourcecode einfügen
+\usepackage[margin=2.0cm,headheight=40pt,top=3cm]{geometry}
+\usepackage{tikz}
+\usepackage{cancel}
+\usepackage{stmaryrd}
+\usepackage{colortbl}
+\usetikzlibrary{matrix,positioning,arrows, automata}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{Jonas Panizza (567687)\\
+	Fabian Bucher (577513)\\
+	Falko Becker (559053)\\
+	Blatt 11}
+\rhead{ÜG Di 13-15 Jens Keppeler\\
+	ÜG Di 13-15 Jens Keppeler \\
+	ÜG Di 13-15 Jens Keppeler \\
+	Rückgabe ÜG Di 13-15 Jens Keppeler}
+\cfoot{}
+\rfoot{\thepage}
+\begin{document}
+	\parindent0pt
+	\textbf{Aufgabe 01}
+	
+	\newpage
+	\textbf{Aufgabe 02}
+	\begin{compactenum} [(a)]
+		\item \begin{compactenum} [(i)]
+			\item WA $ \in H $, da dies genau die Basisregel ist!
+			\item UWAA $ \not\in H$, da es nicht möglich ist durch ableiten der Basisregel mit den Regeln R1-4 ein U am Anfang des Wortes zu erzeugen. R1 konkateniert das Wort mit sich selber, dh W steht immer noch am Anfang. Mit R2 lässt sich ein A in einem Wort durch AH ersetzen, das W steht dann allerdings immer noch am Anfang. Mit R3 kann man UU durch AAA in einem Wort ersetzen, W steht dann aber immer noch am Anfang. Mit der letzten Regel R4 lassen sich drei aufeinander folgende As in einem Wort löschen. Ganz egal mit welcher Regel man die Basisregel ableitet, wird das Wort immer noch mit W anfangen. 
+			\item WAWAUU $ \in H $. Beweis:
+			\begin{tabbing}
+				\=(1) WA $ \qquad \qquad $ \= (B)\\
+				\>(2) WAWA \> (R1) mit v = 'WA'\\
+				\>(3) WAWAU \> (R2) mit v = 'WAW' und w = ' '\\
+				\>(4) WAWAUU \> (R2) mit v = 'WAW' und w = 'U'
+			\end{tabbing}
+			\item WU $ \not\in H$. Beweis: Wir starten mit der Basisregel WA. R1 würde ein weiteres W erzeugen aber da man mit keiner Regel ein W löschen kann, dürfen wir im Folgenden die Regel R1 nicht anwenden. Ziel ist es nun das A von WA zu löschen und mit einem U zu ersetzen. Es gibt nur eine Regel, die As löschen/ersetzen kann und zwar R4. Diese löscht genau drei aufeinander folgende As. Um unser bestehendes A zu löschen, müssen wir also 2 weitere erzeugen um dann R4 anzuwenden. Es gibt nur eine einzige Regel, die As erzeugt, und zwar R3. Allerdings kann man mit ihr immer nur drei As auf einmal erzeugen, also ist es unmöglich zwei zu erzeugen um unser bestehendes A zu löschen. Demnach ist WU nicht ableitbar!
+		\end{compactenum}\
+		
+		\item Beweis durch vollst. Induktion:\\
+		
+		\underline{Induktionsanfang:} \\
+		Sei w die Basisregel WA $ \rightarrow |w|_A = 1 $ (nicht durch 3 teilbar)\\
+		
+		\underline{Induktionsschritt:}\\
+		Als Induktionsschritt benutzen wir nur die Regeln, die As erzeugen oder löschen, also R1, R3 oder R4. \\
+		R1 verdoppelt die Anzahl der As, es gilt also: $ |w|_A \longrightarrow |w|_A * 2^n, \quad n \in \mathbb{N}$\\
+		R3 und R4 erzeugt oder löscht genau drei As. Es gilt also:  $ |w|_A \longrightarrow |w|_A \pm 3n, \quad n \in \mathbb{N}$\\
+		$ |w|_A $ kann dabei natürlich nicht negativ werden!\\
+
+		\underline{Induktionsbehauptung:} \\
+		$ |w|_A = 3k+1$ oder $ |w|_A = 3k+2$ mit $ k \in \mathbb{N} $\\
+		
+		\underline{Induktionsbeweis:}\\
+		Da wir mit der Basisregel anfangen, ist  $ |w|_A = 1 $. Wenn wir jetzt nach R3 ableiten ist $ |w|_A = 4 $. Doch egal wie oft wir nach R3 ableiten, $ (|w|_A)$ mod 3 = 1. Wenn wir nach R1 ableiten wird aus $ (|w|_A)$ mod 3 = 1 $ \longrightarrow $ $ (|w|_A)$ mod 3 = 2. Durch erneutes Ableite durch R1 wird aus $(|w|_A)$ mod 3 = 2 $ \longrightarrow (|w|_A)$ mod 3 = 1. Also kann $(|w|_A)$ mod 3 = 0 nie erreicht werden, und nur in diesem Fall wäre unser Wort durch 3 teilbar!\\
+		
+	\item WAAA $ \not\in H $ da wenn w:= WAAA $ \rightarrow $ $ |w|_A = 3 $ und genau das ist nicht möglich wie wir es in Teilaufgabe (b) gezeigt haben.\\
+	
+	\item Sei $ \mathfrak{K} $ ein Kalkül über M := $ \Sigma $ mit folgenden Ableitungen:\\
+	Axiome: $ \qquad \qquad \frac{}{WA} $\\
+	
+	Weitere Regeln: Für jedes $ \varphi \in H $ und jedes $ v,w \in \Sigma^* $ gelten folgende Regeln:\\
+	
+	$ \frac{\varphi}{\varphi \varphi},\qquad \frac{\varphi:= vAw}{vAUw},\qquad \frac{\varphi:=vUUw}{vAAAw},\qquad \frac{\varphi:= vAAAw}{vw} $\\
+	
+	Somit ist abl$_\mathfrak{K} = H$
+	\end{compactenum}
+	
+	\newpage
+	\textbf{Aufgabe 03}
+	\begin{compactenum} [(a)]
+		\item Für jedes $ \varphi, \psi \in $ FO$[ \sigma $] ist die Sequenz $ \varphi, (\lnot \varphi \vee \psi ) \vdash \psi $ ableitbar in $ \mathfrak{K}_S $
+		\begin{tabbing}
+			(1) $ \qquad $ \= $ \varphi \qquad \qquad \qquad $ \= $\vdash \varphi \qquad \qquad $ \= (V)\\
+			(2) \> $ \varphi, \lnot \varphi $ \> $\vdash \varphi $ \> (E) auf (1) angewendet \\
+			(3) \> $ \lnot \varphi $ \> $ \vdash \lnot \varphi $ \> (V)\\
+			(4) \> $ \lnot \varphi, \varphi $ \> $ \vdash \lnot \varphi $ \> (E) auf (3) angewendet\\
+			(5) \> $ \varphi, \lnot \varphi $ \> $ \vdash \psi $ \> (W) auf (2) und (4) angewendet\\
+			(6) \>$ \psi $ \> $ \vdash \psi $ \> (V)\\
+			(7) \>$ \varphi, \psi $ \> $ \vdash \psi $ \> (E) auf (6) angewendet\\
+			(8) \> $ \varphi, (\lnot \varphi \vee \psi) $ \> $ \vdash \psi $ \>$ (\vee $A) auf (5) und (7) angewendet
+		\end{tabbing}\
+		
+		\item Die Regel zur $ \wedge $-Einführung im Sukzedens ist korrekt, denn: Seien die beiden Sequenzen $ \Gamma \vdash \varphi $  und $ \Gamma \vdash \psi $ korrekt, dann gilt für jede $ \sigma $-Interpretation $ \mathcal{I} $ mit $ \mathcal{I} \models \Gamma $, dass $ \mathcal{I} \models \varphi $ und $ \mathcal{I} \models \psi $, d.h.: $ \mathcal{I} \models (\varphi \wedge \psi) $. Also folgt: $ \Gamma \vdash (\varphi \wedge \psi) $
+	\end{compactenum}
+\end{document}
