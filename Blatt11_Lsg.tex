@@ -17,21 +17,21 @@
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\lhead{Jonas Panizza (567687)\\
-	Fabian Bucher (577513)\\
-	Falko Becker (559053)\\
-	Blatt 11}
-\rhead{ÜG Di 13-15 Jens Keppeler\\
-	ÜG Di 13-15 Jens Keppeler \\
-	ÜG Di 13-15 Jens Keppeler \\
-	Rückgabe ÜG Di 13-15 Jens Keppeler}
+\lhead{Blatt 11}
+\rhead{}
 \cfoot{}
 \rfoot{\thepage}
 \begin{document}
 	\parindent0pt
 	\textbf{Aufgabe 01}
+	\begin{compactenum}
+		\item [(b)] $\varphi_{\text{reflexiv}} = \forall x \ F(x,x)$\\
+		$\varphi_{\text{transitiv}} = \forall x \forall y \forall z \ ((F(x,x) \wedge F(y,z)) \rightarrow F(x,z))$\\
+		$\varphi_{\text{antisymmetrisch}} = \forall x \forall y ((F(x,y) \wedge \neg x = y) \rightarrow \neg F(y,x) $\\
+		$\varphi_{\text{Lineare Ordnung}} = \varphi_{\text{reflexiv}} \wedge \varphi_{\text{transitiv}} \wedge \varphi_{\text{antisymmetrisch}}$\\
+		$\varphi = \forall x \forall y (E(x,y) \rightarrow F(x,y)) \wedge \varphi_{\text{Lineare Ordnung}}$
+	\end{compactenum} \ \\
 	
-	\newpage
 	\textbf{Aufgabe 02}
 	\begin{compactenum} [(a)]
 		\item \begin{compactenum} [(i)]
@@ -74,9 +74,8 @@
 	$ \frac{\varphi}{\varphi \varphi},\qquad \frac{\varphi:= vAw}{vAUw},\qquad \frac{\varphi:=vUUw}{vAAAw},\qquad \frac{\varphi:= vAAAw}{vw} $\\
 	
 	Somit ist abl$_\mathfrak{K} = H$
-	\end{compactenum}
+	\end{compactenum}\ \\
 	
-	\newpage
 	\textbf{Aufgabe 03}
 	\begin{compactenum} [(a)]
 		\item Für jedes $ \varphi, \psi \in $ FO$[ \sigma $] ist die Sequenz $ \varphi, (\lnot \varphi \vee \psi ) \vdash \psi $ ableitbar in $ \mathfrak{K}_S $
