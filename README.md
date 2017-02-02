@@ -1,8 +1,4 @@
 #Logik UE
-* GitHub Hilfe Seiten
-- https://rogerdudler.github.io/git-guide/index.de.html
-- https://rogerdudler.github.io/git-guide/files/git_cheat_sheet.pdf
-- https://thomas-leister.de/github-fuer-anfaenger-repository-anlegen-und-code-hochladen/
-- https://danielmiessler.com/study/git/
-* Excellent Tutorial:
-- https://try.github.io/levels/1/challenges/1
+- excersices for Logik https://www2.informatik.hu-berlin.de/logik/lehre/WS16-17/Logik/
+
+Thanks to https://github.com/Tummetott and https://github.com/bucherfa
