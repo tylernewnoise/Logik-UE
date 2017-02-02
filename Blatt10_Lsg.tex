@@ -17,14 +17,8 @@
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\lhead{Jonas Panizza (567687)\\
-	Fabian Bucher (577513)\\
-	Falko Becker (559053)\\
-	Blatt 10} %BLATT-NR BEI BEDARF ÄNDERN!
-\rhead{ÜG Di 13-15 Jens Keppeler\\
-	ÜG Di 13-15 Jens Keppeler \\
-	ÜG Di 13-15 Jens Keppeler \\
-	Rückgabe ÜG Di 13-15 Jens Keppeler}
+\lhead{Blatt 10}
+\rhead{}
 \cfoot{}
 \rfoot{\thepage}
 \begin{document}
@@ -66,13 +60,12 @@
 		\item $ \psi := \forall x \forall y \forall z \exists v (((\lnot E(x,v)\wedge \lnot E(v,x))\wedge  (\lnot E(y,v)\wedge \lnot E(v,y)))\wedge (\lnot E(z,v)\wedge \lnot E(v,z))) $\\
 		$ \lnot \psi := \exists x \exists y \exists z \forall v (((E(x,v)\vee E(v,x))\vee  (E(y,v)\vee E(v,y)))\vee (E(z,v)\vee E(v,z))) $ \\
 		$ \mathcal{A} \models \psi $ und $ \mathcal{B} \not\models \psi$
-	\end{compactenum}
-	\newpage
+	\end{compactenum}\ \\
 	
 	\textbf{Aufgabe 02}\\
-	Wiedermal scheiß Beweise...
+	TODO
+	\\
 	
-	\newpage
 	\textbf{Aufgabe 03}\\
 	\begin{compactenum} [(a)]
 		\item \begin{compactenum} [(i)]
@@ -94,4 +87,37 @@
 		\end{compactenum}
 		\item TODO
 	\end{compactenum}
+	\textbf{Aufgabe 04}\\
+	\begin{verbatim}
+		:- module(pure_literal, [ knf_shell/0, pure_literal/2 ]).
+		:- use_module(al_nf, [ al2menge/2 ]).
+		:- use_module(al_literals, [ negate_lit/2]).
+		
+		knf_shell :-
+		read(current_input, T),
+		write_menge(T).
+		
+		write_menge(bye) :- !.
+		write_menge(T) :-
+		al2menge(T, TM),
+		write(TM), nl,
+		knf_shell.
+		
+		is_literal(L, KM) :-
+		member(K, KM), member(L, K).
+		
+		is_pure_literal(L, KM) :-
+		is_literal(L, KM),
+		negate_lit(L, LN),
+		\+ is_literal(LN, KM).
+		
+		remove_literal(L, KM, KM2) :-
+		findall(K, (member(K, KM), \+ member(L, K)), KM2).
+		
+		pure_literal(KM, KM2) :-
+		is_pure_literal(L, KM), !,
+		remove_literal(L, KM, KM3),
+		pure_literal(KM3, KM2).
+		pure_literal(KM, KM).
+	\end{verbatim}
 \end{document}
