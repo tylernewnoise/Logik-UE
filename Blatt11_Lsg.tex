@@ -91,5 +91,77 @@
 		\end{tabbing}\
 		
 		\item Die Regel zur $ \wedge $-Einführung im Sukzedens ist korrekt, denn: Seien die beiden Sequenzen $ \Gamma \vdash \varphi $  und $ \Gamma \vdash \psi $ korrekt, dann gilt für jede $ \sigma $-Interpretation $ \mathcal{I} $ mit $ \mathcal{I} \models \Gamma $, dass $ \mathcal{I} \models \varphi $ und $ \mathcal{I} \models \psi $, d.h.: $ \mathcal{I} \models (\varphi \wedge \psi) $. Also folgt: $ \Gamma \vdash (\varphi \wedge \psi) $
-	\end{compactenum}
+	\end{compactenum}\ \\
+	\textbf{Aufgabe 03}
+	\begin{verbatim}
+		%imports
+		:- module(dpll, [ dpll/1 ]).
+		:- use_module(pure_literal, [pure_literal/2]).
+		:- use_module(unit_propagation, [unit_propagation/2]).
+		:- use_module(al_nf, [literal/2]).
+		:- use_module(al_literals, [negate_lit/2]).
+		
+		%Introduction of Context free gramma
+		s --> np, vp.
+		np --> det, ne.
+		ne --> n.
+		ne --> a, ne.
+		vp --> v, np.
+		vp --> v.
+		det --> [the].
+		det --> [a].
+		n --> [dog].
+		n --> [bone].
+		n --> [mouse].
+		n --> [cat].
+		v --> [ate].
+		v --> [chase].
+		a --> [big].
+		a --> [brown].
+		a --> [lazy].
+		
+		s2 --> [a],s2, [b].
+		s2 --> [].
+		
+		%d
+		stmt --> [if], expr, [then], stmt.
+		stmt --> [if], expr, [then], stmt, [else], stmt.
+		stmt --> [s1].
+		stmt --> [s2].
+		expr --> [e1].
+		expr --> [e2].
+		
+		%c
+		%dateiname dpll.pl
+		
+		dpll(KM) :-
+		unit_propagation(KM, KM1),
+		pure_literal(KM1, KM2),
+		check(KM2).
+		
+		% erfüllbar
+		check([]).
+		
+		% unerfüllbar
+		check(KM) :- 
+		member([], KM), !, fail.
+		
+		check(KM) :-
+		literal(L, KM),
+		case(L, KM).
+		
+		case(L, KM) :-
+		dpll([[L] | KM]).
+		
+		case(L, KM) :-
+		negate_lit(L, LN),
+		dpll([[LN] | KM]).
+	\end{verbatim}
+
+
+
+
+
+
+
 \end{document}
