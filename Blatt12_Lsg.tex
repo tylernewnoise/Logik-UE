@@ -1,0 +1,91 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[ngerman]{babel}		%dt. Übersetzung und Umlaute
+\usepackage[utf8]{inputenc}		%Umlaute direkt eingeben
+\usepackage{mathtools}			%Mathekrams
+\usepackage{paralist}			%bessere Listen
+\usepackage{amssymb}			%Mathesymbole
+\usepackage{amsthm}			%typesetting theorems (Text über = u.ä.)
+\usepackage{fancyhdr} 			%Headerstyles
+\usepackage{verbatim}			%Sourcecode einfügen
+\usepackage[margin=2.0cm,headheight=40pt,top=3cm]{geometry}
+\usepackage{tikz}
+\usepackage{cancel}
+\usepackage{stmaryrd}
+\usepackage{colortbl}
+\usetikzlibrary{matrix,positioning,arrows, automata}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{Blatt 12}
+\rhead{}
+\cfoot{}
+\rfoot{\thepage}
+\begin{document}
+	\parindent0pt
+	\textbf{Aufgabe 01}\\
+	
+	\begin{compactenum} [(a)]
+		\item Für jedes $ \varphi \in $ FO$[ \sigma $] ist die Sequenz $ \varphi \vdash \lnot \lnot \varphi $ ableitbar in $ \mathfrak{K}_S $
+		\begin{tabbing}
+			(1) $ \qquad $ \= $ \varphi, \lnot \varphi \qquad \qquad \qquad $ \= $\vdash \varphi \qquad \qquad $ \= (V)\\
+			(2) \> $ \varphi, \lnot \varphi $ \> $ \vdash \lnot \varphi $ \> (V) \\
+			(3) \> $ \varphi, \lnot \lnot \varphi $ \> $ \vdash \lnot \lnot \varphi $ \> (V) \\
+			(4) \> $ \varphi, \lnot \varphi $ \> $ \vdash \lnot \lnot \varphi $ \> (W) auf (1) und (2)\\
+			(5) \> $ \varphi $ \> $ \vdash \lnot \lnot \varphi $ \> (FU) auf (3) und (4)
+		\end{tabbing}\
+		
+		\item 
+		\begin{tabbing}
+			(1) $ \qquad $ \= $ P(x) \qquad \qquad \qquad $ \= $\vdash P(x) \qquad \qquad $ \= (V)\\
+			(2) \> $ P(x), x = y $ \> $ \vdash P(y) $ \> (S) mit t=x, u=y \\
+			(3) \> $ P(x), \forall x\ x=y $ \> $ \vdash P(y) $ \> $ (\forall A)$ mit t=x\\
+			(4) \> $ P(x), \forall x \forall y \ x=y$ \> $ \vdash P(y) $ \> $ (\forall A) $ mit t = y\\
+			(5) \> $ P(x), \forall x \forall y \ x=y$ \> $ \vdash \forall y P(y) $ \> $ (\forall S) $
+		\end{tabbing}\
+	\end{compactenum}\ \\
+	
+	\textbf{Aufgabe 02}
+	\begin{compactenum} [(a)]
+		\item $ \varphi_n := \lnot \exists z_1 \exists z_2 ... \exists z_n (z_1 = z_n \wedge \bigwedge\limits_{i = 1}^{n-1} E(z_i, z_{i+1}))$\\
+		Sei $ \mathcal{A} $ die $ \sigma-$Struktur eines gerichteten Graphen und $ n \in \mathbb{N} $. Es gilt:\\
+		$ \mathcal{A} \models \varphi_n \Longleftrightarrow $ Der gegebene Graph der durch $ \mathcal{A} $ repräsentiert wird hat einen Zyklus der Länge n.\\
+		Sei $ \Phi := \{\varphi_n\ |\ n \in \mathbb{N} \} $\\
+		Es gilt offensichtlich: \\
+		$ \mathcal{A} \models \Phi \Longleftrightarrow $ der gerichtete Graph, der durch $ \mathcal{A} $ repräsentiert wird besitzt einen Zyklus.\\
+		Somit ist die Klasse aller azyklischen Graphen erststufig axiomatisierbar!
+		
+		\item Angenommen $ \Psi $ ist die Menge von FO[$ \sigma $]-Formeln, die die Klasse aller nicht azyklischen Graphen erststufig axiomatisiert.\\
+		$ \mathcal{A} \models \Psi \Longleftrightarrow \mathcal{A} $ besitzt ein Kreis endlicher Länge. \\
+		Sei $ \Psi'  = \Psi \cup \Phi $ ( $ \Psi $ aus Aufgabe (a)) \\
+		Klar: $ \Psi' $ ist unerfüllbar, da es alle Graphen axiomatisiert, die sowohl einen Zyklus haben als auch keinen.\\
+		z.z.: jede endliche Teilmenge $ \Gamma $ von $ \Psi' $ ist erfüllbar. Sei $ \Gamma $ eine beliebige endliche Teilmenge von $ \Psi' $. \\
+		Sei m := $ max \{n \in \mathbb{N}\ |\ \varphi_n \in \Gamma \}$. Sei G ein Graph, der aus einem Zyklus der Länge m+1 besteht. D.h. G ist ein Graph mit der Knotenmenge $ \{1,...,m+1\} $ und der Kantenmenge $ \{(i, i+1)\ |\ 1\leq i \leq m \} $. Dann gilt für die zu G gehörende Struktur $ \mathcal{A} $:\\
+		$ \mathcal{A} \models \Psi' $, da G einen Zyklus der Länge m+1 besitzt und es gibt keinen Zyklus der Länge $ \leq m $. Somit gilt für jedes $ n \leq m $, dass $ \mathcal{A} \models \varphi_n $. Also ist jede Teilmenge $ \Gamma $ erfüllbar. \\
+		Endlichkeitssatz: Jede Teilmenge $ \Gamma $ von $ \Psi' $ ist erfüllbar $ \Longleftrightarrow \Psi' $ ist erfüllbar.\\
+		Das führt zum Widerspruch der Annahme. Also ist die Klasse aller nicht azyklischen Graphen nicht erststufig axiomatisierbar!
+	\end{compactenum}\
+	
+	\textbf{Aufgabe 03}\\
+	
+	\begin{compactenum} [(a)]
+		\item \begin{tabbing}
+			(1) \= $ \frac{}{A_0 \rightarrow A_0} \qquad \qquad \qquad \qquad \qquad \qquad $ \= Axiom weil allgem. gültig\\
+			(2) \> $ \frac{}{\lnot (A_0 \rightarrow A_0)\rightarrow (A_0 \rightarrow A_0)} $ \> Axiom weil allgem. gültig\\
+			(3) \> $ \frac{(A_0 \rightarrow A_0)\ \lnot(A_0 \rightarrow A_0) \rightarrow (A_0 \rightarrow A_0)}{\lnot (A_0 \rightarrow A_0)} $ \> Abduktion
+		\end{tabbing}
+		\item $ \mathfrak{K}_{Abd} $ ist vollständig:\\
+		Es gilt: $ \Phi \models \psi $
+		\begin{tabbing}
+			(1) \= $ \frac{}{A_0 \rightarrow A_0} \qquad \qquad \qquad \qquad \qquad \qquad $ \= Axiom weil allgem. gültig\\
+			(2) \> $ \frac{}{\psi \rightarrow (A_0 \rightarrow A_0)} $ \> Axiom weil allgem. gültig\\
+			(3) \> $ \frac{(A_0 \rightarrow A_0)\ \psi \rightarrow (A_0 \rightarrow A_0)}{\psi} $ \> Abduktion
+		\end{tabbing}
+		$ \Rightarrow \psi \in abl_{\mathfrak{K}_{Abd}}(\emptyset) \subseteq abl_{\mathfrak{K}_{Abd}}(\Phi)$\\
+		$ \mathfrak{K}_{Abd} $ ist nicht korrekt:\\
+		$ \lnot (A_0 \rightarrow A_0) \in abl_{\mathfrak{K}_{Abd}}(\emptyset) $\\
+		$ \emptyset \not\models \lnot (A_0 \rightarrow A_0) $
+	\end{compactenum}
+	
+	
+\end{document}
